@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laborers - AgriConnect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <i style="background-color: #4A4947;" class="fas fa-seedling"></i> 
+            <span style="background-color: #4A4947;">AgriConnect</span>
+        </div>
+        <div class="nav-item">
+            <i style="background-color: #4A4947;" class="fas fa-hard-hat"></i> Laborers
+        </div>
+    </nav>
+
+    <div class="container change">
+        <div  class="box register">
+            <h2 style="background-color: #B17457;"><i style="background-color: #B17457;" class="fas fa-user-plus"></i> Register</h2>
+            <p style="background-color: #B17457;">New here? Register as a laborer to find job opportunities.</p>
+            <a href="#">Register Now</a>
+        </div>
+        <div class="box login">
+            <h2 style="background-color: #D8D2C2;"><i style="background-color: #D8D2C2;" class="fas fa-sign-in-alt"></i> Login</h2>
+            <p style="background-color: #D8D2C2;">Already have an account? Login to apply for jobs.</p>
+            <a href="#">Login Here</a>
+        </div>
+    </div>
+    <div class="gradient"></div>
+    <section class="guidelines">
+        <h2 style="background-color: #D8D2C2;"><i style="background-color: #D8D2C2;" class="fas fa-book"></i> Getting Started</h2>
+        <div style="background-color: #D8D2C2;" class="guideline-container">
+            <div class="guideline-box"><i class="fas fa-user-check"></i> Register & update skills</div>
+            <div class="guideline-box"><i class="fas fa-search"></i> Browse job listings</div>
+            <div class="guideline-box"><i class="fas fa-paper-plane"></i> Apply for suitable jobs</div>
+            <div class="guideline-box"><i class="fas fa-handshake"></i> Attend interviews if needed</div>
+            <div class="guideline-box"><i class="fas fa-clock"></i> Work as per schedule</div>
+            <div class="guideline-box"><i class="fas fa-comments"></i> Communicate with employer</div>
+            <div class="guideline-box"><i class="fas fa-star"></i> Maintain work quality & reliability</div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="background-color: #4A4947;">© 2025 AgriConnect. All Rights Reserved.</p>
+    </footer>
+    <script src="index.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let boxes = document.querySelectorAll(".box, .guideline-box");
+
+            boxes.forEach((box, index) => {
+                setTimeout(() => {
+                    box.classList.add("show");
+                }, index * 200);
+            });
+        });
+    </script>
+
+</body>
+</html>

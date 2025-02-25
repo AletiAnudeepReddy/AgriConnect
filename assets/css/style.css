@@ -1,0 +1,250 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #FAF7F0;
+}
+
+.navbar {
+    background-color: #4A4947;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    color: #D8D2C2;
+    width: 100%;
+    min-height: 5rem;
+    
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    background-color: #4A4947;
+}
+
+.logo i {
+    margin-right: 10px;
+    background-color: #4A4947;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 50px;
+}
+.change {
+    padding-bottom: 20px;
+}
+
+.box {
+    margin: 2vh;
+    width: 30%;
+    height: 50vh;
+    padding: 3rem;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+
+.farmer,.register {
+    background-color: #B17457;
+}
+
+.laborer,.login {
+    background-color: #D8D2C2;
+    color: #4A4947;
+}
+
+.box h2 {
+    margin-bottom: 10px;
+
+}
+
+.box a {
+    display: inline-block;
+    margin-top: 50px;
+    padding: 4px 8px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.box a:hover {
+    border: 1.5px solid #777;
+}
+
+@media (max-width: 1024px) { 
+    .box {
+        width: 45%;
+    }
+}
+
+@media (max-width: 700px) { 
+    .container {
+        flex-direction: column;
+    }
+    .box {
+        width: 100%;
+        height: auto;
+        padding: 2rem;
+    }
+}
+
+.box.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.box h2, .box p, .box a {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.box.show h2, 
+.box.show p, 
+.box.show a {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s; 
+}
+.box:hover {
+    transform: scale(1.08); 
+    box-shadow: 0 12px 18px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.nav-item {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    color: #D8D2C2;
+    background-color: #4A4947;
+}
+
+.nav-item i {
+    margin-right: 8px;
+}
+
+.nav-item {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    color: #D8D2C2;
+    background-color: #4A4947;
+}
+
+.nav-item i {
+    margin-right: 8px;
+}
+
+/* Guidelines Section */
+.guidelines {
+    width: 100%;
+    background-color: #D8D2C2; /* Matching Login Box */
+    padding: 50px 0;
+    text-align: center;
+    padding-bottom: 60px;
+}
+
+.guidelines h2 {
+    color: #4A4947;
+    font-size: 28px;
+    margin-bottom: 40px;
+
+}
+
+/* Guideline Boxes */
+.guideline-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.guideline-box {
+    background: white;
+    width: 22%;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: #4A4947;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.guideline-box.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.guideline-box i {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #B17457;
+}
+
+@media (max-width: 1024px) {
+    .guideline-box {
+        width: 30%;
+    }
+}
+
+@media (max-width: 768px) {
+    .guideline-box {
+        width: 45%;
+    }
+}
+
+@media (max-width: 500px) {
+    .guideline-box {
+        width: 80%;
+    }
+}
+
+.guideline-box i{
+    background-color: white;
+}
+.guideline-box:hover {
+    transform: scale(1.08); 
+    box-shadow: 0 12px 18px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+footer {
+    height: 5rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: #4A4947;
+    color: white;
+}
+.guidelines {
+    background: linear-gradient(to bottom, #FAF7F0, #D8D2C2 50px, #D8D2C2);
+    padding: 60px 0;
+    text-align: center;
+}
