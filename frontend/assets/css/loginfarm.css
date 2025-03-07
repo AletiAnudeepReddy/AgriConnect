@@ -187,7 +187,7 @@ p a:hover {
 }
 
 /* For mobile devices (480px and below) */
-@media (max-width: 480px) {
+@media (max-width: 360px) {
     .container {
         width: 95%;
     }
