@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laborer Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/laborlogin.css">
+</head>
+<body>
+
+    <div class="laborer-container">
+        <div class="laborer-register-box">
+            <form id="laborer-register-form" action="register_laborer.php" method="POST">
+                <h2><i class="fas fa-user-plus"></i> Laborer Registration</h2>
+
+                <div class="laborer-input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="laborer_fullname" placeholder="Full Name" required>
+                </div>
+
+                <div class="laborer-input-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="text" name="laborer_phone" placeholder="Mobile Number" required>
+                </div>
+
+                <div class="laborer-input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="laborer_password" placeholder="Password" required>
+                </div>
+
+                <div class="laborer-input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="laborer_confirm_password" placeholder="Confirm Password" required>
+                </div>
+
+                <div class="laborer-input-group">
+                    <i class="fas fa-briefcase"></i>
+                    <select name="laborer_skills" required>
+                        <option value="">Select Work Type</option>
+                        <option value="plowing">Plowing</option>
+                        <option value="harvesting">Harvesting</option>
+                        <option value="sowing">Sowing</option>
+                        <option value="watering">Watering</option>
+                        <option value="fertilizing">Fertilizing</option>
+                    </select>
+                </div>
+
+                <div class="laborer-input-group">
+                    <i class="fas fa-calendar-alt"></i>
+                    <input type="number" name="laborer_experience" placeholder="Experience (Years)" min="0">
+                </div>
+
+                <div class="laborer-input-group">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input type="text" name="laborer_location" placeholder="Preferred Work Location">
+                </div>
+
+                <div class="laborer-terms">
+                    <label><input type="checkbox" name="laborer_terms" required> Agree to Terms & Conditions</label>
+                </div>
+
+                <button type="submit">Register</button>
+            </form>
+
+            <p>Already have an account? <a href="loginlabor.html">Login here</a></p>
+        </div>
+    </div>
+
+    <script src="assets/js/labor.js"></script>
+
+</body>
+</html>

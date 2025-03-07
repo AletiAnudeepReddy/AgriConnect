@@ -1,0 +1,203 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Fade-in effect for the form on page load */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #4A4947, #B17457);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Container */
+.laborer-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Login & Register Boxes */
+.laborer-register-box,
+.laborer-login-box {
+    width: 70%;
+    background: #D8D2C2;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+}
+
+.laborer-register-box:hover,
+.laborer-login-box:hover {
+    transform: scale(1.05);
+}
+
+/* Input Fields */
+.laborer-input-group {
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+    margin-bottom: 12px;
+    background: #fff;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Scale effect on input box hover */
+.laborer-input-group:hover {
+    transform: scale(1.05);
+}
+
+.laborer-input-group i {
+    margin-right: 10px;
+    color: #4A4947;
+}
+
+input, select {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: transparent;
+    transition: 0.3s;
+}
+
+/* Input field focus effect */
+.laborer-input-group input:focus,
+.laborer-input-group select:focus {
+    border: 2px solid #B17457;
+    box-shadow: 0 0 10px rgba(177, 116, 87, 0.6);
+    transition: 0.3s;
+}
+
+/* Remember Me & Forgot Password */
+.laborer-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.laborer-options label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.laborer-options a {
+    text-decoration: none;
+    color: #B17457;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.laborer-options a:hover {
+    text-decoration: underline;
+    color: #8D5A38;
+}
+
+/* Button Styles */
+button {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(to right, #B17457, #8D5A38);
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Button hover effect */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+button:hover {
+    background: linear-gradient(to right, #8D5A38, #B17457);
+    animation: bounce 0.3s ease-in-out;
+}
+
+/* Terms & Conditions */
+.laborer-terms {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.laborer-terms input {
+    margin-right: 5px;
+}
+
+/* Register Box should be bigger */
+.laborer-register-box {
+    width: 450px;
+}
+
+/* Smooth fade-in effect for links */
+p a {
+    color: #B17457;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+p a:hover {
+    color: #8D5A38;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .laborer-container {
+        width: 80%;
+    }
+    .laborer-register-box,
+    .laborer-login-box {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .laborer-container {
+        width: 95%;
+    }
+    .laborer-register-box,
+    .laborer-login-box {
+        width: 100%;
+        padding: 20px;
+    }
+    .laborer-input-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
