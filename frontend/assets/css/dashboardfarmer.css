@@ -1,0 +1,219 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #4A4947;
+    color: #D8D2C2;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Left Section (AgriConnect Title & Farmer Label) */
+.left-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-icon {
+    font-size: 24px;
+    color: #D8D2C2;
+}
+
+.farmer-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #B17457;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.farmer-label:hover {
+    background: #8D5A38;
+}
+
+/* Right Section (Welcome & Sign-out) */
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.welcome-text {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.signout-icon {
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.signout-icon:hover {
+    color: #B17457;
+}
+body {
+    background: #F5F5F5;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #4A4947;
+    color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 20px;
+}
+
+.menu {
+    list-style: none;
+    padding: 10px;
+}
+
+.menu li {
+    padding: 12px 20px;
+    margin: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.menu li:hover, .menu .active {
+    background: #B17457;
+}
+
+.menu .logout {
+    background: #ff4d4d;
+    color: white;
+}
+
+.menu .logout:hover {
+    background: #e60000;
+}
+
+/* Main Container */
+.main-container {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+/* Top Header */
+.top-header {
+    background: #4A4947;
+    color: white;
+    padding: 15px;
+    font-size: 22px;
+    text-align: center;
+}
+
+/* Right Profile Section */
+.right-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #D8D2C2;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* AgriConnect Logo */
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4A4947;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    font-size: 22px;
+    color: #B17457;
+}
+
+/* Profile */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #4A4947;
+}
+
+.profile p {
+    color: #4A4947;
+    font-size: 14px;
+}
+.right-profile {
+    width: 18%; /* Same width as sidebar */
+    height: 100vh; /* Full height */
+    background-color: #D8D2C2; /* Light background color */
+    position: fixed;
+    right: 0; /* Stick to extreme right */
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.right-profile .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #4A4947;
+}
+
+.right-profile .logo i {
+    font-size: 24px;
+    color: #4A4947;
+}
+
+.right-profile .profile {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.right-profile .profile img {
+    width: 80px; /* Profile image size */
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #4A4947;
+}
+
+.right-profile .profile p {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #4A4947;
+}
