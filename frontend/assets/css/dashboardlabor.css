@@ -8,7 +8,7 @@
 
 /* Background */
 body {
-    background: linear-gradient(to left, #4A4947, #B17457);
+    background:  #f4f4f4;
     color: white;
     height: 100vh;
 }
@@ -18,7 +18,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to right, #3a3735, #8f5d44);
+    background:#4A4947;
     padding: 20px 50px;
     position: fixed;
     width: 100%;
@@ -27,7 +27,7 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-/* Navbar Hover Effect */
+/* Navbar Hover Effect 
 .navbar:hover {
     background: linear-gradient(to right, #2e2b2a, #754d35);
 }
@@ -43,7 +43,7 @@ body {
 
 .logo i {
     margin-right: 10px;
-    color: #FFD700;
+    color: white;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -65,17 +65,17 @@ body {
 .nav-links a {
     text-decoration: none;
     color: white;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 500;
-    padding: 10px 15px;
+    padding: 5px 5px;
     transition: all 0.3s ease-in-out;
     border-radius: 5px;
 }
 
 /* Navbar Link Hover Effect */
 .nav-links a:hover {
-    background: #FFD700;
-    color: #4A4947;
+    background: #B17457;
+    color: white;
     transform: translateY(-2px);
 }
 
@@ -103,7 +103,7 @@ body {
 .job-listings {
     width: 70%;
     padding: 30px;
-    background: rgba(255, 255, 255, 0.1);
+    background: #D8D2C2;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease-in-out;
@@ -118,12 +118,12 @@ body {
 .job-listings h2 {
     margin-bottom: 15px;
     text-align: center;
-    color: #FFD700;
+    color: #4A4947;
 }
 
 /* Job Cards */
 .job-card {
-    background: linear-gradient(to right, #4A4947, #B17457);
+    background: white;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 15px;
@@ -138,20 +138,22 @@ body {
 }
 
 .job-card h3 {
-    color: #FFD700;
+    color: #4A4947;
 }
 
 .job-card p {
     font-size: 14px;
+    color: #4A4947;
     margin: 5px 0;
 }
 
 /* Apply Button */
 .apply-btn {
-    background: #FFD700;
+    background: #B17457;
     color: #4A4947;
     border: none;
-    padding: 12px;
+    padding: 5px;
+    margin-top: 10px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
@@ -163,7 +165,7 @@ body {
 
 /* Apply Button Hover Effect */
 .apply-btn:hover {
-    background: #ffcc00;
+    background: #B17457;
     transform: scale(1.1);
 }
 
@@ -172,7 +174,7 @@ body {
     width: 20%;
     text-align: center;
     padding: 25px;
-    background: linear-gradient(to right, #4A4947, #B17457);
+    background: #B17457;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease-in-out;
@@ -188,7 +190,7 @@ body {
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    border: 4px solid #FFD700;
+    border: 4px solid #B17457;
     margin-bottom: 15px;
 }
 
