@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmer Dashboard - AgriConnect</title>
+    <title>Labor Dashboard - AgriConnect</title>
 
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/dashboardfarmer.css">
+    <link rel="stylesheet" href="assets/css/dashboardlabor.css">
 </head>
 <body>
 
@@ -17,8 +17,8 @@
             <i class="fas fa-seedling"></i> AgriConnect
         </div>
         <ul class="nav-links">
-            <li><a href="#"><i class="fas fa-clipboard-list"></i> My Job Posts</a></li>
-            <li><a href="#"><i class="fas fa-users"></i> Applicants</a></li>
+            <li><a href="#"><i class="fas fa-briefcase"></i> Available Jobs</a></li>
+            <li><a href="#"><i class="fas fa-user-check"></i> Applied Jobs</a></li>
             <li><a href="#"><i class="fas fa-star"></i> Ratings</a></li>
             <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
             <li class="logout"><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
@@ -28,29 +28,26 @@
     <!-- Main Content -->
     <div class="dashboard-container">
         
-        <!-- Job Postings Section -->
+        <!-- Job Listings Section -->
         <div class="job-listings">
-            <h2>My Job Posts</h2>
+            <h2>Available Jobs</h2>
             <div class="job-card">
-                <h3>Looking for a Farm Helper</h3>
+                <h3>Farm Helper Needed</h3>
                 <p>Location: Green Valley Farms</p>
-                <button class="apply-btn"><i class="fas fa-edit"></i> Edit</button>
-                <button class="apply-btn delete-btn"><i class="fas fa-trash"></i> Delete</button>
+                <button class="apply-btn"><i class="fas fa-paper-plane"></i> Apply</button>
             </div>
 
             <div class="job-card">
-                <h3>Need a Harvest Worker</h3>
+                <h3>Harvest Worker</h3>
                 <p>Location: Sunrise Fields</p>
-                <button class="apply-btn"><i class="fas fa-edit"></i> Edit</button>
-                <button class="apply-btn delete-btn"><i class="fas fa-trash"></i> Delete</button>
+                <button class="apply-btn"><i class="fas fa-paper-plane"></i> Apply</button>
             </div>
         </div>
 
         <!-- Right Profile Section -->
         <div class="profile-section">
-            <img src="assets/images/farmer-profile.jpg" alt="Farmer">
-            <p>Welcome, <strong>Farmer Name</strong></p>
-            <button class="apply-btn"><i class="fas fa-plus"></i> Add Job</button>
+            <img src="assets/images/labor-profile.jpg" alt="Laborer">
+            <p>Welcome, <strong>Laborer Name</strong></p>
         </div>
 
     </div>

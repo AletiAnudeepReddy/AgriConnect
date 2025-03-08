@@ -27,6 +27,7 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
+/* Navbar Hover Effect */
 .navbar:hover {
     background: linear-gradient(to right, #2e2b2a, #754d35);
 }
@@ -46,6 +47,7 @@ body {
     transition: transform 0.3s ease-in-out;
 }
 
+/* Logo Hover Effect */
 .logo:hover i {
     transform: scale(1.2);
 }
@@ -70,6 +72,7 @@ body {
     border-radius: 5px;
 }
 
+/* Navbar Link Hover Effect */
 .nav-links a:hover {
     background: #FFD700;
     color: #4A4947;
@@ -96,7 +99,7 @@ body {
     padding: 120px 50px 20px;
 }
 
-/* Job Postings */
+/* Job Listings */
 .job-listings {
     width: 70%;
     padding: 30px;
@@ -106,6 +109,7 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
+/* Hover Effect on Job Listings */
 .job-listings:hover {
     transform: scale(1.02);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
@@ -127,6 +131,7 @@ body {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
+/* Hover Effect on Job Cards */
 .job-card:hover {
     transform: scale(1.03);
     box-shadow: 0 5px 18px rgba(0, 0, 0, 0.4);
@@ -141,7 +146,7 @@ body {
     margin: 5px 0;
 }
 
-/* Buttons */
+/* Apply Button */
 .apply-btn {
     background: #FFD700;
     color: #4A4947;
@@ -156,18 +161,10 @@ body {
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
 
+/* Apply Button Hover Effect */
 .apply-btn:hover {
     background: #ffcc00;
     transform: scale(1.1);
-}
-
-.delete-btn {
-    background: #ff4d4d;
-    color: white;
-}
-
-.delete-btn:hover {
-    background: #e60000;
 }
 
 /* Profile Section */
@@ -181,6 +178,7 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
+/* Hover Effect on Profile Section */
 .profile-section:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
