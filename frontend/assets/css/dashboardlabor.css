@@ -255,6 +255,28 @@ body {
     background: #B17457;
     transform: scale(1.1);
 }
+.view-more-btn {
+    background: #B17457;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    margin: 20px auto;
+}
+
+.view-more-btn:hover {
+    background: #a6634a;
+    transform: scale(1.05);
+}
+
 
 /* Profile Section */
 .profile-section {

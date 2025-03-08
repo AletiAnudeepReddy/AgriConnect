@@ -55,23 +55,28 @@
         <!-- Job Listings Section -->
         <div class="job-listings">
             <h2>Available Jobs</h2>
-            <div class="job-card">
+            <div class="job-card" data-job-id="1">
                 <h3>Farm Helper Needed</h3>
-                <p>Location: Green Valley Farms</p>
-                <p>Date: 6th Oct, 2024 - Timings: 12 PM</p>
-                <p>Wages: ₹600</p>
-                <p>Required: 10 workers</p>
+                <p><strong>Location:</strong> <span class="job-location">Green Valley Farms</span></p>
+                <p><strong>Date:</strong> 6th Oct, 2024</p>
+                <p><strong>Timings:</strong> 12 PM - 6 PM</p>
+                <p><strong>Wages:</strong> ₹600</p>
+                <p><strong>Workers Required:</strong> 10</p>
                 <button class="apply-btn"><i class="fas fa-paper-plane"></i> Apply</button>
             </div>
-    
-            <div class="job-card">
+            
+            <div class="job-card" data-job-id="2">
                 <h3>Harvest Worker</h3>
-                <p>Location: Sunrise Fields</p>
-                <p>Date: 6th Oct, 2024 - Timings: 12 PM</p>
-                <p>Wages: ₹600</p>
-                <p>Required: 10 workers</p>
+                <p><strong>Location:</strong> <span class="job-location">Sunrise Fields</span></p>
+                <p><strong>Date:</strong> 6th Oct, 2024</p>
+                <p><strong>Timings:</strong> 8 AM - 2 PM</p>
+                <p><strong>Wages:</strong> ₹600</p>
+                <p><strong>Workers Required:</strong> 10</p>
                 <button class="apply-btn"><i class="fas fa-paper-plane"></i> Apply</button>
             </div>
+            <button id="view-more-btn" class="view-more-btn">
+                <i class="fas fa-angle-down"></i> View More Jobs
+            </button>
         </div>
     
         <!-- Right Profile Section -->
@@ -81,6 +86,6 @@
         </div>
     </div>
     
-
+    <script src="assets/js/labordash.js"></script>
 </body>
 </html>
