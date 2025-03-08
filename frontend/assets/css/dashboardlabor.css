@@ -89,6 +89,54 @@ body {
     transform: scale(1.05);
 }
 
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Responsive Navbar */
+@media screen and (max-width: 842px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 4.5rem;
+        right: 0;
+        width: 200px;
+        background: #4A4947;
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        padding: 10px 0;
+        text-align: left;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 20px;
+    }
+
+    .nav-links a {
+        font-size: 16px;
+        display: block;
+        padding: 10px;
+    }
+
+    .logout a {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+}
+
 /* New Harvest Banner Below Navbar */
 .harvest-banner {
     height: 3.75rem;
@@ -109,8 +157,8 @@ body {
     background: #B17457;
     color: white;
     border: none;
-    padding: 10px 15px;
-    font-size: 16px;
+    padding: 8px 8px;
+    font-size: 13px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -241,7 +289,9 @@ body {
     border: none;
     padding: 5px;
     margin-top: 10px;
-    font-size: 16px;
+    margin-left: 70%;
+    width: 30%;
+    font-size: 13px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -277,16 +327,15 @@ body {
     transform: scale(1.05);
 }
 
-
-/* Profile Section */
 .profile-section {
     width: 25%;
     text-align: center;
     padding: 25px;
-    background: #6D6A67;
+    background: #6D6A67; /* Dark Grey Background */
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease-in-out;
+    color: white;
 }
 
 /* Hover Effect on Profile Section */
@@ -295,15 +344,38 @@ body {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
 
-.profile-section img {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    border: 4px solid #B17457;
+/* Profile Icon Styling */
+.profile-icon {
+    font-size: 100px;
+    color: #B17457; /* Warm Brown */
     margin-bottom: 15px;
 }
 
+/* Profile Text */
 .profile-section p {
     font-size: 18px;
     font-weight: bold;
+    margin: 15px;
+}
+
+/* Additional User Details Styling */
+.profile-section span {
+    font-weight: normal;
+    color: #E4D5C3; /* Light Cream for contrast */
+}
+@media screen and (max-width: 600px) {
+    .dashboard-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filter-section,
+    .job-listings,
+    .profile-section {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .harvest-banner{
+        height: 5.1rem;
+    }
 }

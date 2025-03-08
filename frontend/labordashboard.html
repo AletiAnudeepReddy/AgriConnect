@@ -16,12 +16,15 @@
         <div class="logo">
             <i class="fas fa-seedling"></i> AgriConnect
         </div>
-        <ul class="nav-links">
-            <li><a href="#"><i class="fas fa-briefcase"></i> Available Jobs</a></li>
-            <li><a href="#"><i class="fas fa-user-check"></i> Applied Jobs</a></li>
-            <li><a href="#"><i class="fas fa-star"></i> Ratings</a></li>
-            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
-            <li class="logout"><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li id="available-jobs"><a href="#"><i class="fas fa-briefcase"></i> Available Jobs</a></li>
+            <li id="applied-jobs"><a href="#"><i class="fas fa-user-check"></i> Applied Jobs</a></li>
+            <li id="ratings"><a href="#"><i class="fas fa-star"></i> Ratings</a></li>
+            <li id="settings"><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            <li id="logout" class="logout"><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </nav>
     <div class="harvest-banner">
@@ -81,11 +84,19 @@
     
         <!-- Right Profile Section -->
         <div class="profile-section">
-            <img src="assets/images/labor-profile.jpg" alt="Laborer">
-            <p>Welcome, <strong>Laborer Name</strong></p>
+            <i class="fas fa-user-circle profile-icon"></i> <!-- Large Profile Icon -->
+            <p>Welcome, <strong id="laborer-name">Loading...</strong></p>
+            <p><strong>Work Type:</strong> <span id="laborer-work-type">Loading...</span></p>
+            <p><strong>Experience:</strong> <span id="laborer-experience">Loading...</span> years</p>
+            <p><strong>Location:</strong> <span id="laborer-location">Loading...</span></p>
         </div>
     </div>
     
-    <script src="assets/js/labordash.js"></script>
+    <script>
+        document.getElementById("menu-toggle").addEventListener("click", function () {
+    document.getElementById("nav-links").classList.toggle("active");
+});
+
+    </script>
 </body>
 </html>
