@@ -24,33 +24,63 @@
             <li class="logout"><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </nav>
-
+    <div class="harvest-banner">
+        <p>"Strong hands, brighter futures! Your hard work shapes the harvest."</p>
+        <button class="post-job-btn">
+            <i class="fas fa-plus-circle"></i> Find Yor Work
+        </button>
+    </div>
+    
     <!-- Main Content -->
     <div class="dashboard-container">
-        
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <h2>Filters</h2>
+            <label for="location">Location:</label>
+            <select id="location">
+                <option value="all">All</option>
+                <option value="green-valley">Green Valley</option>
+                <option value="sunrise-fields">Sunrise Fields</option>
+            </select>
+    
+            <label for="wages">Minimum Wages:</label>
+            <input type="number" id="wages" placeholder="Enter amount">
+    
+            <label for="date">Date:</label>
+            <input type="date" id="date">
+    
+            <button class="filter-btn"><i class="fas fa-filter"></i> Apply Filters</button>
+        </div>
+    
         <!-- Job Listings Section -->
         <div class="job-listings">
             <h2>Available Jobs</h2>
             <div class="job-card">
                 <h3>Farm Helper Needed</h3>
                 <p>Location: Green Valley Farms</p>
+                <p>Date: 6th Oct, 2024 - Timings: 12 PM</p>
+                <p>Wages: ₹600</p>
+                <p>Required: 10 workers</p>
                 <button class="apply-btn"><i class="fas fa-paper-plane"></i> Apply</button>
             </div>
-
+    
             <div class="job-card">
                 <h3>Harvest Worker</h3>
                 <p>Location: Sunrise Fields</p>
+                <p>Date: 6th Oct, 2024 - Timings: 12 PM</p>
+                <p>Wages: ₹600</p>
+                <p>Required: 10 workers</p>
                 <button class="apply-btn"><i class="fas fa-paper-plane"></i> Apply</button>
             </div>
         </div>
-
+    
         <!-- Right Profile Section -->
         <div class="profile-section">
             <img src="assets/images/labor-profile.jpg" alt="Laborer">
             <p>Welcome, <strong>Laborer Name</strong></p>
         </div>
-
     </div>
+    
 
 </body>
 </html>

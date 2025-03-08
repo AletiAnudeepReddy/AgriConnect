@@ -8,28 +8,25 @@
 
 /* Background */
 body {
-    background:  #f4f4f4;
+    background: #f4f4f4;
     color: white;
     height: 100vh;
 }
 
 /* Navbar */
 .navbar {
+    height: 4.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background:#4A4947;
-    padding: 20px 50px;
+    background: #4A4947;
+    padding: 20px 10px;
     position: fixed;
     width: 100%;
     top: 0;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease-in-out;
-}
-
-/* Navbar Hover Effect 
-.navbar:hover {
-    background: linear-gradient(to right, #2e2b2a, #754d35);
+    z-index: 1000;
 }
 
 /* Logo */
@@ -59,7 +56,7 @@ body {
 }
 
 .nav-links li {
-    margin: 0 20px;
+    margin: 8px 8px;
 }
 
 .nav-links a {
@@ -92,16 +89,106 @@ body {
     transform: scale(1.05);
 }
 
+/* New Harvest Banner Below Navbar */
+.harvest-banner {
+    height: 3.75rem;
+    background: #D8D2C2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #4A4947;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 4.5rem; /* Pushes the banner below the navbar */
+}
+
+/* Post Job Button */
+.post-job-btn {
+    background: #B17457;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Post Job Button Hover Effect */
+.post-job-btn:hover {
+    background: #a6634a;
+    transform: scale(1.05);
+}
+
 /* Dashboard Container */
 .dashboard-container {
     display: flex;
     justify-content: space-between;
-    padding: 120px 50px 20px;
+    padding: 2px 25px 20px 25px;
+    margin-top: 1.5rem;
+}
+
+/* Filter Section */
+.filter-section {
+    width: 23%;
+    padding: 20px;
+    background: #6D6A67;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Filter Section Hover Effect */
+.filter-section:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.filter-section h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.filter-section label {
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+.filter-section select,
+.filter-section input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+.filter-section button {
+    width: 100%;
+    padding: 10px;
+    background: #D8D2C2;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.filter-section button:hover {
+    background: #a6634a;
 }
 
 /* Job Listings */
 .job-listings {
-    width: 70%;
+    width: 47%;
     padding: 30px;
     background: #D8D2C2;
     border-radius: 10px;
@@ -150,7 +237,7 @@ body {
 /* Apply Button */
 .apply-btn {
     background: #B17457;
-    color: #4A4947;
+    color: white;
     border: none;
     padding: 5px;
     margin-top: 10px;
@@ -171,10 +258,10 @@ body {
 
 /* Profile Section */
 .profile-section {
-    width: 20%;
+    width: 25%;
     text-align: center;
     padding: 25px;
-    background: #B17457;
+    background: #6D6A67;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease-in-out;
