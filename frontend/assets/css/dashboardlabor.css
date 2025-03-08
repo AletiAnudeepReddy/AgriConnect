@@ -27,6 +27,19 @@ body {
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease-in-out;
     z-index: 1000;
+    animation: slideInFromTop 0.8s ease-out;
+}
+
+/* Navbar Slide-In Animation */
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* Logo */
@@ -36,6 +49,7 @@ body {
     color: white;
     text-transform: uppercase;
     transition: all 0.3s ease-in-out;
+    animation: fadeIn 1.2s ease-in-out;
 }
 
 .logo i {
@@ -53,8 +67,19 @@ body {
 .nav-links {
     list-style: none;
     display: flex;
+    opacity: 0;
+    animation: fadeIn 1.2s ease-in-out forwards;
 }
 
+/* Navbar Fade-In Effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 .nav-links li {
     margin: 8px 8px;
 }
@@ -84,11 +109,13 @@ body {
     font-weight: bold;
 }
 
+/* Logout Button Hover Effect */
 .logout a:hover {
     background: #e60000;
     transform: scale(1.05);
 }
 
+/* Menu Toggle */
 .menu-toggle {
     display: none;
     font-size: 26px;
@@ -114,11 +141,14 @@ body {
         border-radius: 5px;
         padding: 10px 0;
         text-align: left;
+        opacity: 0;
+        animation: fadeIn 0.5s ease-in-out forwards;
     }
 
     .nav-links.active {
         display: flex;
     }
+
 
     .nav-links li {
         margin: 10px 20px;
@@ -138,6 +168,7 @@ body {
 }
 
 /* New Harvest Banner Below Navbar */
+/* Harvest Banner (Slide-In Effect) */
 .harvest-banner {
     height: 3.75rem;
     background: #D8D2C2;
@@ -149,8 +180,22 @@ body {
     font-weight: bold;
     color: #4A4947;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    margin-top: 4.5rem; /* Pushes the banner below the navbar */
+    margin-top: 4.5rem;
+    animation: slideInFromBottom 0.8s ease-out;
 }
+
+/* Slide-In from Bottom Animation */
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 
 /* Post Job Button */
 .post-job-btn {
@@ -181,6 +226,7 @@ body {
     justify-content: space-between;
     padding: 2px 25px 20px 25px;
     margin-top: 1.5rem;
+    animation: fadeInUp 1s ease-in-out;
 }
 
 /* Filter Section */
@@ -191,6 +237,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease-in-out;
+    animation: slideInLeft 1s ease-in-out;
 }
 
 /* Filter Section Hover Effect */
@@ -242,6 +289,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
 }
 
 /* Hover Effect on Job Listings */
@@ -331,11 +379,54 @@ body {
     width: 25%;
     text-align: center;
     padding: 25px;
-    background: #6D6A67; /* Dark Grey Background */
+    background: #6D6A67;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease-in-out;
     color: white;
+    animation: slideInRight 1s ease-in-out;
+}
+/* Keyframe Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Hover Effect on Profile Section */
@@ -379,3 +470,4 @@ body {
         height: 5.1rem;
     }
 }
+
