@@ -225,7 +225,7 @@ body {
 .dashboard-container {
     display: flex;
     justify-content: space-between;
-    padding: 25px 25px 20px 25px;
+    padding: 25px 25px 30px 25px;
 
     animation: fadeInUp 1s ease-in-out;
     background: url('https://www.transparenttextures.com/patterns/white-wave.png'); /* Subtle Texture */
@@ -481,3 +481,91 @@ body {
     }
 }
 
+/* Current Job Status Section */
+.current-job-container {
+    width: 100%;
+    padding: 20px;
+    margin-top: 0px;
+    background: linear-gradient(135deg, #6D6A67, #E4D5C3); /* Stylish Gradient */
+    text-align: center;
+    color: white;
+    border-radius: 0px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-in-out;
+}
+
+/* Text for No Job */
+.no-job-text {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 15px 0;
+}
+
+/* Job Active Section */
+
+.job-active .job-info {
+    text-align: left;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    width: 50%;
+}
+
+/* Live Location Icon */
+.live-location {
+    font-size: 50px;
+    color: #FFD700; /* Gold */
+    animation: blink 1.5s infinite;
+}
+
+/* Blinking Animation for Live Icon */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* Job Active Section */
+.job-active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Live Location Button */
+.location-btn {
+    background-color: #FFD700;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.location-btn:hover {
+    background-color: #FFC107;
+}
+
+/* Call Button */
+.call-btn {
+    background-color: #FF5733;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.call-btn:hover {
+    background-color: #E53935;
+}

@@ -91,12 +91,58 @@
             <p><strong>Location:</strong> <span id="laborer-location">Loading...</span></p>
         </div>
     </div>
+    <div class="current-job-container">
+        <div id="current-job-content">
+            <!-- This will be dynamically updated based on the user's job status -->
+        </div>
+    </div>
     
     <script>
         document.getElementById("menu-toggle").addEventListener("click", function () {
     document.getElementById("nav-links").classList.toggle("active");
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const currentJobContainer = document.getElementById("current-job-content");
 
+    // Mock data: Replace this with actual user data from backend
+    const userCurrentJob = {
+        jobTitle: "Harvest Worker",
+        location: "Sunrise Fields",
+        startTime: "8 AM",
+        endTime: "2 PM",
+        wages: "₹600",
+        liveLocation: "Tracking..."
+    };
+
+    // If no job is accepted
+    if (!userCurrentJob) {
+        currentJobContainer.innerHTML = `<p class="no-job-text">You have no active jobs. <br> Apply for a job now!</p>`;
+    } else {
+        // Display the active job details
+        currentJobContainer.innerHTML = `
+            <div class="job-active">
+    <!-- Live Location Button -->
+    <button class="location-btn" onclick="openLiveLocation('${userCurrentJob.liveLocationUrl}')">
+        <i class="fas fa-map-marker-alt"></i>
+    </button>
+
+    <div class="job-info">
+        <h3>Currently Working Job</h3>
+        <p><strong>Job:</strong> ${userCurrentJob.jobTitle}</p>
+        <p><strong>Location:</strong> ${userCurrentJob.location}</p>
+        <p><strong>Timings:</strong> ${userCurrentJob.startTime} - ${userCurrentJob.endTime}</p>
+        <p><strong>Wages:</strong> ${userCurrentJob.wages}</p>
+        <p><strong>Live Location:</strong> <span>${userCurrentJob.liveLocation}</span></p>
+    </div>
+
+    <!-- Call Farmer Button -->
+    <button class="call-btn" onclick="callFarmer('${userCurrentJob.farmerPhone}')">
+        <i class="fas fa-phone-alt"></i>
+    </button>
+</div>
+        `;
+    }
+});
     </script>
 </body>
 </html>
