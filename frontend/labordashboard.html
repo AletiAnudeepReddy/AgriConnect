@@ -96,6 +96,49 @@
             <!-- This will be dynamically updated based on the user's job status -->
         </div>
     </div>
+    <footer class="labor-footer">
+        <div class="footer-container">
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> <a href="tel:+919876543210">+91 98765 43210</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:support@agriconnect.com">support@agriconnect.com</a></p>
+                <p><i class="fas fa-location-dot"></i> Green Valley, India</p>
+            </div>
+    
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Jobs</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+    
+            <!-- Social Media -->
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>&copy; <span id="currentYear"></span> AgriConnect. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Set current year dynamically
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+    </script>
+    
     
     <script>
         document.getElementById("menu-toggle").addEventListener("click", function () {

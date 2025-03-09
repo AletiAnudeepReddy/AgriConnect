@@ -484,7 +484,7 @@ body {
 /* Current Job Status Section */
 .current-job-container {
     width: 100%;
-    padding: 20px;
+    padding: 30px;
     margin-top: 0px;
     background: linear-gradient(135deg, #6D6A67, #E4D5C3); /* Stylish Gradient */
     text-align: center;
@@ -546,7 +546,7 @@ body {
     border: none;
     padding: 10px;
     border-radius: 50%;
-    font-size: 20px;
+    font-size: 30px;
     cursor: pointer;
     transition: 0.3s ease;
 }
@@ -561,11 +561,86 @@ body {
     border: none;
     padding: 10px;
     border-radius: 50%;
-    font-size: 20px;
+    font-size: 30px;
     cursor: pointer;
     transition: 0.3s ease;
 }
 
 .call-btn:hover {
     background-color: #E53935;
+}
+.labor-footer {
+    align-items: center;background: url('https://www.transparenttextures.com/patterns/white-wave.png'); /* Subtle Texture */
+    
+    background-color: #4A4947;
+    color: white;
+    padding: 20px 2px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 0px;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    border-bottom: 2px solid #B17457;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.footer-section p,
+.footer-section ul {
+    font-size: 14px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 8px 0;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #B17457;
+}
+
+/* Social Icons */
+.social-icons a {
+    color: white;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: #B17457;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 14px;
+    border-top: 1px solid #777;
+    padding-top: 10px;
 }
