@@ -18,8 +18,9 @@ body {
     height: 4.5rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background: #4A4947;
+    align-items: center;background: url('https://www.transparenttextures.com/patterns/white-wave.png'); /* Subtle Texture */
+    
+    background-color: #4A4947;
     padding: 20px 10px;
     position: fixed;
     width: 100%;
@@ -224,16 +225,21 @@ body {
 .dashboard-container {
     display: flex;
     justify-content: space-between;
-    padding: 2px 25px 20px 25px;
-    margin-top: 1.5rem;
+    padding: 25px 25px 20px 25px;
+
     animation: fadeInUp 1s ease-in-out;
+    background: url('https://www.transparenttextures.com/patterns/white-wave.png'); /* Subtle Texture */
+    background-color: #f4f4f4; /* Matches theme */
+    
 }
+
 
 /* Filter Section */
 .filter-section {
     width: 23%;
+    height: 50%;
     padding: 20px;
-    background: #6D6A67;
+    background: white;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease-in-out;
@@ -249,20 +255,22 @@ body {
 .filter-section h2 {
     text-align: center;
     margin-bottom: 15px;
+    color: #4A4947;
 }
 
 .filter-section label {
     font-size: 14px;
     font-weight: bold;
-    color: white;
+    color: #4A4947;
 }
 
 .filter-section select,
 .filter-section input {
     width: 100%;
     padding: 8px;
+    background-color: #f4f4f4;
     margin: 5px 0 15px;
-    border: none;
+    border: 1px solid #4A4947;
     border-radius: 5px;
 }
 
@@ -377,9 +385,10 @@ body {
 
 .profile-section {
     width: 25%;
+    height: 50%;
     text-align: center;
     padding: 25px;
-    background: #6D6A67;
+    background: white;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease-in-out;
@@ -447,6 +456,7 @@ body {
     font-size: 18px;
     font-weight: bold;
     margin: 15px;
+    color: #4A4947;
 }
 
 /* Additional User Details Styling */
