@@ -1,4 +1,3 @@
-/* General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -8,27 +7,39 @@
 
 /* Background */
 body {
-    background: linear-gradient(to left, #4A4947, #B17457);
+    background: #f4f4f4;
     color: white;
     height: 100vh;
 }
 
 /* Navbar */
 .navbar {
+    height: 4.5rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(to right, #3a3735, #8f5d44);
-    padding: 20px 50px;
+    align-items: center;background: url('https://www.transparenttextures.com/patterns/white-wave.png'); /* Subtle Texture */
+    
+    background-color: #4A4947;
+    padding: 20px 10px;
     position: fixed;
     width: 100%;
     top: 0;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease-in-out;
+    z-index: 1000;
+    animation: slideInFromTop 0.8s ease-out;
 }
 
-.navbar:hover {
-    background: linear-gradient(to right, #2e2b2a, #754d35);
+/* Navbar Slide-In Animation */
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* Logo */
@@ -38,14 +49,16 @@ body {
     color: white;
     text-transform: uppercase;
     transition: all 0.3s ease-in-out;
+    animation: fadeIn 1.2s ease-in-out;
 }
 
 .logo i {
     margin-right: 10px;
-    color: #FFD700;
+    color: white;
     transition: transform 0.3s ease-in-out;
 }
 
+/* Logo Hover Effect */
 .logo:hover i {
     transform: scale(1.2);
 }
@@ -54,25 +67,37 @@ body {
 .nav-links {
     list-style: none;
     display: flex;
+    opacity: 0;
+    animation: fadeIn 1.2s ease-in-out forwards;
 }
 
+/* Navbar Fade-In Effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 .nav-links li {
-    margin: 0 20px;
+    margin: 8px 8px;
 }
 
 .nav-links a {
     text-decoration: none;
     color: white;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 500;
-    padding: 10px 15px;
+    padding: 5px 5px;
     transition: all 0.3s ease-in-out;
     border-radius: 5px;
 }
 
+/* Navbar Link Hover Effect */
 .nav-links a:hover {
-    background: #FFD700;
-    color: #4A4947;
+    background: #B17457;
+    color: white;
     transform: translateY(-2px);
 }
 
@@ -84,117 +109,114 @@ body {
     font-weight: bold;
 }
 
+/* Logout Button Hover Effect */
 .logout a:hover {
     background: #e60000;
     transform: scale(1.05);
 }
 
-/* Dashboard Container */
-.dashboard-container {
+/* Menu Toggle */
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Responsive Navbar */
+@media screen and (max-width: 842px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 4.5rem;
+        right: 0;
+        width: 200px;
+        background: #4A4947;
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        padding: 10px 0;
+        text-align: left;
+        opacity: 0;
+        animation: fadeIn 0.5s ease-in-out forwards;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+
+    .nav-links li {
+        margin: 10px 20px;
+    }
+
+    .nav-links a {
+        font-size: 16px;
+        display: block;
+        padding: 10px;
+    }
+
+    .logout a {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+}
+
+/* New Harvest Banner Below Navbar */
+/* Harvest Banner (Slide-In Effect) */
+.harvest-banner {
+    height: 3.75rem;
+    background: #D8D2C2;
     display: flex;
     justify-content: space-between;
-    padding: 120px 50px 20px;
-}
-
-/* Job Postings */
-.job-listings {
-    width: 70%;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease-in-out;
-}
-
-.job-listings:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-}
-
-.job-listings h2 {
-    margin-bottom: 15px;
-    text-align: center;
-    color: #FFD700;
-}
-
-/* Job Cards */
-.job-card {
-    background: linear-gradient(to right, #4A4947, #B17457);
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.job-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.4);
-}
-
-.job-card h3 {
-    color: #FFD700;
-}
-
-.job-card p {
-    font-size: 14px;
-    margin: 5px 0;
-}
-
-/* Buttons */
-.apply-btn {
-    background: #FFD700;
+    align-items: center;
+    padding: 0 50px;
+    font-size: 18px;
+    font-weight: bold;
     color: #4A4947;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 4.5rem;
+    animation: slideInFromBottom 0.8s ease-out;
+}
+
+/* Slide-In from Bottom Animation */
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+/* Post Job Button */
+.post-job-btn {
+    background: #B17457;
+    color: white;
     border: none;
-    padding: 12px;
-    font-size: 16px;
+    padding: 8px 8px;
+    font-size: 13px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     border-radius: 5px;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    gap: 5px;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
 
-.apply-btn:hover {
-    background: #ffcc00;
-    transform: scale(1.1);
-}
-
-.delete-btn {
-    background: #ff4d4d;
-    color: white;
-}
-
-.delete-btn:hover {
-    background: #e60000;
-}
-
-/* Profile Section */
-.profile-section {
-    width: 20%;
-    text-align: center;
-    padding: 25px;
-    background: linear-gradient(to right, #4A4947, #B17457);
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    transition: all 0.3s ease-in-out;
-}
-
-.profile-section:hover {
+/* Post Job Button Hover Effect */
+.post-job-btn:hover {
+    background: #a6634a;
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
 
-.profile-section img {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    border: 4px solid #FFD700;
-    margin-bottom: 15px;
-}
-
-.profile-section p {
-    font-size: 18px;
-    font-weight: bold;
-}
