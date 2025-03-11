@@ -36,33 +36,83 @@
 
     <!-- Main Content -->
     <div class="dashboard-container">
-        
-        <!-- Job Postings Section -->
-        <div class="job-listings">
-            <h2>My Job Posts</h2>
-            <div class="job-card">
-                <h3>Looking for a Farm Helper</h3>
-                <p>Location: Green Valley Farms</p>
-                <button class="apply-btn"><i class="fas fa-edit"></i> Edit</button>
-                <button class="apply-btn delete-btn"><i class="fas fa-trash"></i> Delete</button>
-            </div>
 
-            <div class="job-card">
-                <h3>Need a Harvest Worker</h3>
-                <p>Location: Sunrise Fields</p>
-                <button class="apply-btn"><i class="fas fa-edit"></i> Edit</button>
-                <button class="apply-btn delete-btn"><i class="fas fa-trash"></i> Delete</button>
+        <!-- Left: Job Insights & Quick Actions -->
+        <div class="left-section">
+            <h2>Welcome, <strong>Farmer Name</strong></h2>
+            <p>Your farm, your workforce! Connect with skilled laborers easily.</p>
+    
+            <!-- Job Insights -->
+            <div class="job-stats">
+                <div class="stat-card">
+                    <i class="fas fa-briefcase"></i>
+                    <p>Total Jobs</p>
+                    <h3 id="total-jobs">3</h3>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <p>Applications</p>
+                    <h3 id="total-applications">12</h3>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Hired Laborers</p>
+                    <h3 id="hired-laborers">5</h3>
+                </div>
+            </div>
+    
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <button id="post-job-btn" class="action-btn"><i class="fas fa-plus"></i> Post a Job</button>
+                <button id="view-jobs-btn" class="action-btn"><i class="fas fa-clipboard-list"></i> View Posted Jobs</button>
+                <button id="view-applications-btn" class="action-btn"><i class="fas fa-user-check"></i> View Applications</button>
+                <button id="find-laborers-btn" class="action-btn"><i class="fas fa-search"></i> Find Laborers</button>
             </div>
         </div>
-
-        <!-- Right Profile Section -->
+    
+        <!-- Middle: Active Job Listings -->
+        <div class="job-listings">
+            <h2>My Job Posts</h2>
+    
+            <div class="job-card">
+                <h3>Looking for a Farm Helper</h3>
+                <p>📍 Location: Green Valley Farms</p>
+                <button class="edit-btn"><i class="fas fa-edit"></i> Edit</button>
+                <button class="delete-btn"><i class="fas fa-trash"></i> Delete</button>
+            </div>
+    
+            <div class="job-card">
+                <h3>Need a Harvest Worker</h3>
+                <p>📍 Location: Sunrise Fields</p>
+                <button class="edit-btn"><i class="fas fa-edit"></i> Edit</button>
+                <button class="delete-btn"><i class="fas fa-trash"></i> Delete</button>
+            </div>
+        </div>
+    
+        <!-- Right: Profile & Recommended Laborers -->
         <div class="profile-section">
             <img src="assets/images/farmer-profile.jpg" alt="Farmer">
             <p>Welcome, <strong>Farmer Name</strong></p>
-            <button class="apply-btn"><i class="fas fa-plus"></i> Add Job</button>
+            <button id="add-job-btn" class="action-btn"><i class="fas fa-plus"></i> Add Job</button>
+    
+            <!-- Recommended Laborers (Optional) -->
+            <div class="recommended-laborers">
+                <h3>Recommended Laborers</h3>
+                <div class="laborer-card">
+                    <p><i class="fas fa-user"></i> Rajesh Kumar</p>
+                    <p>🌟 Experience: 3 Years</p>
+                    <button class="hire-btn"><i class="fas fa-handshake"></i> Hire</button>
+                </div>
+                <div class="laborer-card">
+                    <p><i class="fas fa-user"></i> Suresh Yadav</p>
+                    <p>🌟 Experience: 5 Years</p>
+                    <button class="hire-btn"><i class="fas fa-handshake"></i> Hire</button>
+                </div>
+            </div>
         </div>
-
+    
     </div>
+    
 
 </body>
 </html>

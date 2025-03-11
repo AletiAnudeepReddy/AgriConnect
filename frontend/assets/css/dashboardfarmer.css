@@ -220,3 +220,201 @@ body {
     transform: scale(1.05);
 }
 
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* Left, Middle, Right */
+    gap: 20px;
+    padding: 20px;
+    background: url('https://www.transparenttextures.com/patterns/white-wave.png'); /* Subtle Texture */
+    background-color: #f4f4f4; /* Matches theme */
+    
+
+}
+
+/* Left Section (Job Stats & Actions) */
+.left-section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.left-section h2 {
+    color: #333;
+}
+
+.job-stats {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.stat-card {
+    background: #f4f4f4;
+    color: #4A4947;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    flex: 1;
+    margin: 0 5px;
+}
+
+.stat-card i {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.quick-actions {
+    display: flex;
+    flex-direction: column;
+}
+
+.action-btn {
+    background: #D8D2C2;
+    color: #4A4947;
+    border: none;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.action-btn:hover {
+    background: #B17457;
+    color: whitesmoke;
+}
+
+/* Middle Section (Job Listings) */
+.job-listings {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.job-listings h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.job-card {
+    background: #fff3cd;
+    padding: 15px;
+    border-left: 5px solid #ff9800;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.job-card h3 {
+    color: #333;
+}
+
+.job-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+.edit-btn, .delete-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.edit-btn {
+    background: #ffc107;
+    color: black;
+}
+
+.edit-btn:hover {
+    background: #e0a800;
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #c82333;
+}
+
+/* Right Section (Profile & Recommended Laborers) */
+.profile-section {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.profile-section p {
+    font-size: 16px;
+    color: #333;
+}
+
+.recommended-laborers {
+    margin-top: 20px;
+}
+
+.recommended-laborers h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.laborer-card {
+    background: #e3f2fd;
+    padding: 10px;
+    border-left: 5px solid #007bff;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.laborer-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+.hire-btn {
+    background: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hire-btn:hover {
+    background: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .dashboard-container {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+    
+    .job-stats {
+        flex-direction: column;
+    }
+
+    .stat-card {
+        margin-bottom: 10px;
+    }
+
+    .quick-actions button {
+        width: 100%;
+    }
+}
