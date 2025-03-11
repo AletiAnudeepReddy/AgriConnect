@@ -288,36 +288,36 @@ body {
 /* Middle Section (Job Listings) */
 .job-listings {
     background: white;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .job-listings h2 {
-    color: #333;
+    color: #4A4947;
     margin-bottom: 10px;
 }
 
 .job-card {
-    background: #fff3cd;
-    padding: 15px;
-    border-left: 5px solid #ff9800;
-    margin-bottom: 10px;
+    background: #D8D2C2;
+    padding: 20px;
+    border-left: 5px solid #757373;
+    margin-bottom: 15px;
     border-radius: 5px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .job-card h3 {
-    color: #333;
+    color: #4A4947;
 }
 
 .job-card p {
     font-size: 14px;
-    color: #555;
+    color: #4A4947;
 }
 
 .edit-btn, .delete-btn {
-    padding: 8px 12px;
+    padding: 5px 8px;
     border: none;
     border-radius: 5px;
     margin-top: 10px;
@@ -326,12 +326,14 @@ body {
 }
 
 .edit-btn {
-    background: #ffc107;
-    color: black;
+    background: #f4f4f4;
+    color: #4A4947;
+    border: 0.6px solid #4A4947;
 }
 
 .edit-btn:hover {
-    background: #e0a800;
+    background: #a6634a;
+    color: white;
 }
 
 .delete-btn {
@@ -362,7 +364,7 @@ body {
 
 .profile-section p {
     font-size: 16px;
-    color: #333;
+    color: #4A4947;
 }
 
 .recommended-laborers {
@@ -370,20 +372,21 @@ body {
 }
 
 .recommended-laborers h3 {
-    color: #333;
+    color: #4A4947;
     margin-bottom: 10px;
 }
 
 .laborer-card {
-    background: #e3f2fd;
+    background: #f4f4f4;
     padding: 10px;
-    border-left: 5px solid #007bff;
+    border-left: 5px solid #918e8e;
     margin-bottom: 10px;
     border-radius: 5px;
 }
 
 .laborer-card p {
     font-size: 14px;
+    margin-top: 7px;
     color: #555;
 }
 
