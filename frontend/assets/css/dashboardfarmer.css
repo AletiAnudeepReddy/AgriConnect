@@ -179,7 +179,7 @@ body {
     font-size: 18px;
     font-weight: bold;
     color: #4A4947;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     margin-top: 4.5rem;
     animation: slideInFromBottom 0.8s ease-out;
 }
@@ -221,24 +221,30 @@ body {
 }
 
 .dashboard-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr; /* Left, Middle, Right */
-    gap: 20px;
-    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 25px 30px 25px;
     background: url('https://www.transparenttextures.com/patterns/white-wave.png'); /* Subtle Texture */
     background-color: #f4f4f4; /* Matches theme */
+    animation: fadeInUp 1s ease-in-out;
     
 
 }
 
 /* Left Section (Job Stats & Actions) */
 .left-section {
+    width: 25%;
     background: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease-in-out;
+    animation: slideInLeft 1s ease-in-out;
 }
-
+.left-section:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
 .left-section h2 {
     color: #333;
 }
@@ -253,12 +259,21 @@ body {
     background: #f4f4f4;
     color: #4A4947;
     text-align: center;
-    padding: 15px;
+    padding: 10px;
     border-radius: 10px;
     flex: 1;
     margin: 0 5px;
 }
 
+@media screen and (max-width: 1075px){
+    .job-stats{
+        flex-direction: column;
+        
+    }
+    .stat-card{
+        margin-top: 15px;
+    }
+}
 .stat-card i {
     font-size: 24px;
     margin-bottom: 5px;
@@ -287,12 +302,18 @@ body {
 
 /* Middle Section (Job Listings) */
 .job-listings {
+    width: 45%;
     background: white;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
 }
-
+.job-listings:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
 .job-listings h2 {
     color: #4A4947;
     margin-bottom: 10px;
@@ -304,9 +325,13 @@ body {
     border-left: 5px solid #757373;
     margin-bottom: 15px;
     border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-
+.job-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.4);
+}
 .job-card h3 {
     color: #4A4947;
 }
@@ -323,6 +348,8 @@ body {
     margin-top: 10px;
     cursor: pointer;
     font-size: 14px;
+    transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .edit-btn {
@@ -347,13 +374,62 @@ body {
 
 /* Right Section (Profile & Recommended Laborers) */
 .profile-section {
+    width: 25%;
     background: white;
     padding: 20px;
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease-in-out;
+    
+    animation: slideInRight 1s ease-in-out;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.profile-section:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
 .profile-section img {
     width: 100px;
     height: 100px;
@@ -402,22 +478,31 @@ body {
 .hire-btn:hover {
     background: #218838;
 }
-
-/* Responsive Design */
-@media (max-width: 1024px) {
+@media screen and (max-width: 600px) {
     .dashboard-container {
-        grid-template-columns: 1fr; /* Single column layout */
-    }
-    
-    .job-stats {
         flex-direction: column;
+        align-items: center;
     }
 
-    .stat-card {
-        margin-bottom: 10px;
-    }
-
-    .quick-actions button {
+    .left-section,
+    .job-listings,
+    .profile-section {
         width: 100%;
+        margin-bottom: 20px;
     }
+    .harvest-banner{
+        height: 5.1rem;
+    }
+    .job-stats{
+        flex-direction: row;
+        
+    }
+
 }
+
+
+
+
+
+
+
