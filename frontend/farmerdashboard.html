@@ -8,24 +8,6 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/dashboardfarmer.css">
-    <style>
-        @media screen and (max-width: 600px) {
-    .dashboard-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .left-section,
-    .job-listings,
-    .profile-section {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .harvest-banner{
-        height: 5.1rem;
-    }
-}
-    </style>
 </head>
 <body>
 
@@ -126,6 +108,69 @@
             </div>
         </div>
     
+    </div>
+    <div class="job-container">
+      <div class="content"> <!-- Left Side: Job Details -->
+        
+
+        <div class="label-icon">
+            <i class="fa-sharp fa-solid fa-tractor"></i>
+        </div>
+        <div class="job-details">
+            <h2>FIND LABORERS FOR YOUR FARM</h2>
+            <p>Post jobs, set wages, and hire skilled workers easily. Connect with laborers in your area today.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-users"></i>
+                    <p><strong>Skilled Laborers</strong> - Find experienced workers</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p><strong>Local Hiring</strong> - Select workers nearby</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-calendar-alt"></i>
+                    <p><strong>Flexible Timing</strong> - Schedule work at your convenience</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <p><strong>Fair Wages</strong> - Set wages that suit your budget</p>
+                </div>
+            </div>
+        </div>
+      </div> 
+    
+        <!-- Right Side: Job Posting Form -->
+        <div class="job-form">
+            <h2 style="color: #4A4947;text-align: center;">Post a Job</h2>
+    
+            <form action="#" method="POST">
+                <label for="jobName">Job Name</label>
+                <input type="text" id="jobName" name="jobName" placeholder="Enter job title" required>
+    
+                <label for="jobLocation">Location</label>
+                <input type="text" id="jobLocation" name="jobLocation" placeholder="Enter location" required>
+    
+                <label for="jobWages">Wages (per day)</label>
+                <input type="number" id="jobWages" name="jobWages" placeholder="Enter amount" required>
+    
+                <label for="jobDate">Date</label>
+                <input type="date" id="jobDate" name="jobDate" required>
+    
+                <label for="jobTime">Time (From - To)</label>
+                <div class="time-inputs">
+                    <input type="time" id="jobTimeFrom" name="jobTimeFrom" required>
+                    <span>to</span>
+                    <input type="time" id="jobTimeTo" name="jobTimeTo" required>
+                </div>
+    
+                <label for="numWorkers">Number of Workers</label>
+                <input type="number" id="numWorkers" name="numWorkers" min="1" placeholder="Enter number" required>
+    
+                <button type="submit">Post Job</button>
+            </form>
+        </div>
     </div>
     
 

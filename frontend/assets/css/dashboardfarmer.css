@@ -501,8 +501,182 @@ body {
 }
 
 
+/* Job Container */
+.job-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+.content {
+    width: 57%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+    position: relative;
+}
+
+/* Icon Styling */
+.label-icon {
+    font-size: 200px; /* Make the icon very large */
+    color: #27ae60; /* Green color */
+    align-self: flex-start; /* Align to the extreme left */
+    margin-bottom: 10px; /* Space between icon and job details */
+}
+/* Left Side: Job Details */
+.job-details {
+    flex: 1;
+    position: relative;
+    text-align: center;
+    padding: 0px;
+    border-radius: 10px;
+    overflow: hidden;
+}
 
 
+/* Adjust icon size */
 
 
+/* Headings */
+.job-details h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
 
+/* Paragraph */
+.job-details p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Features Section */
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+ /* Semi-transparent black */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Individual Feature */
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 48%;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.feature:hover {
+    transform: scale(1.05);
+}
+
+/* Feature Icons */
+.feature i {
+    font-size: 20px;
+    color: #FFD700; /* Gold color */
+}
+
+/* Right Side: Job Form */
+.job-form {
+    width: 45%;
+    flex: 1;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Form Labels */
+.job-form label {
+    font-weight: bold;
+    display: block;
+    margin: 10px 0 5px;
+    
+    color: #4A4947;
+}
+
+/* Form Inputs */
+.job-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Time Inputs */
+.time-inputs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Submit Button */
+.job-form button {
+    width: 100%;
+    padding: 12px;
+    background: #27ae60;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s ease;
+}
+
+.job-form button:hover {
+    background: #219150;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .job-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .job-details {
+        text-align: center;
+    }
+
+    .features {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .feature {
+        width: 100%;
+    }
+}
