@@ -293,7 +293,7 @@ body {
 .job-listings {
     width: 47%;
     padding: 30px;
-    background: #D8D2C2;
+    background: white;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease-in-out;
@@ -314,7 +314,7 @@ body {
 
 /* Job Cards */
 .job-card {
-    background: white;
+    background: #f4f4f4;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 15px;
