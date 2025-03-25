@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.getElementById("login-form");
 
@@ -87,4 +85,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
->>>>>>> origin/feature
