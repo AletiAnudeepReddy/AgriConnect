@@ -1,0 +1,208 @@
+/* 🌟 General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* 🌟 Header */
+header {
+    text-align: center;
+    background: #4A4947;
+    color: white;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* 🌟 Navigation Bar */
+nav {
+    display: flex;
+    justify-content: center;
+    background: #393535    ;
+    padding: 8px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    padding: 0;
+}
+
+nav ul li {
+    padding: 8px 15px;
+    cursor: pointer;
+    color: white;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background 0.3s ease;
+}
+
+nav ul li:hover, nav ul li.active {
+    background: #27ae60;
+    border-radius: 4px;
+}
+
+/* 🌟 Content Sections */
+.tab-content {
+    display: none;
+    padding: 15px;
+    max-width: 750px;
+    margin: 20px auto;
+    background: white;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+.laborer{
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    margin: 15px;
+}
+.tab-content.active {
+    display: block;
+}
+
+/* 🌟 Rating Section */
+.farmer-rating, .laborer-rating {
+    padding: 15px;
+    background: #ffffff;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06);
+    border: 1px solid #ddd;
+}
+
+h2 {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+h3 {
+    color: #34495e;
+    font-size: 1.1rem;
+    margin: 8px;
+}
+
+/* 🌟 Star Rating */
+.stars {
+    font-size: 35px;
+    color: #dcdcdc;
+    cursor: pointer;
+}
+
+.star:hover,
+.star.active {
+    color: #ffcc00;
+    transition: 0.3s ease;
+}
+
+/* 🌟 Textarea Styling */
+textarea {
+    width: 88%;
+    height: 80px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    margin: 7px;
+    font-size: 14px;
+    resize: none;
+    margin-top: 6px;
+}
+
+/* 🌟 Submit Button */
+button.submit-rating {
+    display: block;
+    width: 100%;
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button.submit-rating:hover {
+    background: #219150;
+}
+
+/* 🌟 Rating Summary */
+.overall-rating {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* 🌟 Reviews Section */
+.rating-distribution {
+    padding: 10px 0;
+}
+
+.rating-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.bar {
+    background: lightgray;
+    width: 250px;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.fill {
+    background: gold;
+    height: 100%;
+    border-radius: 5px;
+}
+
+/* 🌟 Reviews Section */
+.user-reviews {
+    margin-top: 20px;
+}
+
+.review {
+    background: #ecf0f1;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.review h4 {
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+.review p {
+    font-size: 16px;
+    color: #7f8c8d;
+}
+
+/* 🌟 Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tab-content {
+        padding: 12px;
+        max-width: 90%;
+    }
+}
