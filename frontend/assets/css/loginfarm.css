@@ -200,3 +200,24 @@ p a:hover {
         align-items: flex-start;
     }
 }
+.error-box, .success-box {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    z-index: 1000;
+    text-align: center;
+}
+
+.error-box {
+    background-color: #e74c3c;
+}
+
+.success-box {
+    background-color: #2ecc71;
+}
+
