@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer's Dashboard</title>
+    <link rel="stylesheet" href="farmerjob.css">
+</head>
+<body>
+    <header>
+        <h1>Farmer's Dashboard</h1>
+    </header>
+
+    <section class="job-posting">
+        <h2>Post a Job</h2>
+        <form>
+            <input type="text" placeholder="Job Title" required>
+            <textarea placeholder="Job Description" required></textarea>
+            <input type="text" placeholder="Salary (per day/month)" required>
+            <input type="text" placeholder="Location" required>
+            <input type="text" placeholder="Duration (days/weeks)" required>
+            <button type="submit">Post Job</button>
+        </form>
+    </section>
+
+    <section class="job-listings">
+        <h2>Your Job Listings</h2>
+        <div class="job">
+            <h3>Farm Work - Harvesting</h3>
+            <p>Salary: ₹500/day | Duration: 7 days | Location: Hyderabad</p>
+            <button class="view-applicants">View Applicants</button>
+            <button class="delete-job">Delete</button>
+        </div>
+    </section>
+
+    <section class="chat">
+        <h2>Chat with Labourers</h2>
+        <div class="chat-box">
+            <p><strong>Labourer:</strong> Is this job still available?</p>
+            <input type="text" placeholder="Type your message">
+            <button>Send</button>
+        </div>
+    </section>
+</body>
+</html>
