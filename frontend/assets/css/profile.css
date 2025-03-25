@@ -1,0 +1,179 @@
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Profile Container */
+.profile-container {
+    width: 95%;
+    max-width: 600px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+/* Profile Header */
+.profile-header {
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #4CAF50;
+    margin-top: 10px;
+}
+
+#username {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+.user-role {
+    font-size: 18px;
+    color: #777;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.availability-status {
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.available {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.not-available {
+    background-color: #ff4444;
+    color: white;
+}
+
+.edit-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Profile Content */
+.profile-content {
+    text-align: left;
+    margin-top: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Sections */
+.profile-section {
+    margin-bottom: 20px;
+}
+
+.profile-section h3 {
+    color: #333;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.profile-section p, .profile-section ul {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.profile-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.profile-section ul li {
+    margin-bottom: 8px;
+}
+
+/* Message Button */
+.message-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.message-btn:hover {
+    background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-container {
+        width: 100%;
+        margin: 20px;
+    }
+
+    .profile-content {
+        max-height: 70vh;
+    }
+
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .profile-header h2 {
+        font-size: 20px;
+    }
+
+    .profile-content {
+        max-height: 65vh;
+    }
+
+    .edit-btn, .message-btn {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
