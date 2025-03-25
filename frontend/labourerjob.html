@@ -3,41 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Labourer's Dashboard</title>
+    <title>Job Listings - AgriConnect</title>
 
-    <link rel="stylesheet" href="assets/css/labourerjob.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
+        body {
+            background-color: #f4f4f4;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2d6a4f;
+            padding: 15px 20px;
+            color: white;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            display: inline;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .logout a {
+            color: #ffcc00;
+        }
+
+        /* Main Content Layout */
+        .job-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            gap: 20px;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+        }
+
+        .filter-section h2 {
+            margin-bottom: 10px;
+            color: #2d6a4f;
+        }
+
+        .filter-section label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .filter-section select,
+        .filter-section input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .filter-btn {
+            background-color: #2d6a4f;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        .filter-btn:hover {
+            background-color: #1b4d3e;
+        }
+
+        /* Job Listings */
+        .job-listings {
+            flex: 1;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-listings h2 {
+            color: #2d6a4f;
+            margin-bottom: 10px;
+        }
+
+        .job-card {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .job-card h3 {
+            color: #2d6a4f;
+        }
+
+        .apply-btn {
+            background-color: #2d6a4f;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .apply-btn:hover {
+            background-color: #1b4d3e;
+        }
+
+        .view-more-btn {
+            width: 100%;
+            background-color: #2d6a4f;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .view-more-btn:hover {
+            background-color: #1b4d3e;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Labourer's Dashboard</h1>
-    </header>
 
-    <section class="job-listings">
-        <h2>Available Jobs</h2>
-        <div class="job">
-            <h3>Harvesting Work</h3>
-            <p>Salary: ₹500/day | Duration: 7 days | Location: Hyderabad</p>
-            <button class="apply-job">Apply</button>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-seedling"></i> AgriConnect
         </div>
-    </section>
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#"><i class="fas fa-briefcase"></i> Available Jobs</a></li>
+            <li><a href="#"><i class="fas fa-user-check"></i> Applied Jobs</a></li>
+            <li><a href="#"><i class="fas fa-star"></i> Ratings</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            <li class="logout"><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
 
-    <section class="application-status">
-        <h2>My Applications</h2>
-        <div class="job">
-            <h3>Harvesting Work</h3>
-            <p>Status: <span class="status">Under Review</span></p>
-        </div>
-    </section>
+    <!-- Main Content -->
+    <div class="job-container">
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <h2>Filters</h2>
+            <label for="location">Location:</label>
+            <select id="location">
+                <option value="all">All</option>
+                <option value="green-valley">Green Valley</option>
+                <option value="sunrise-fields">Sunrise Fields</option>
+            </select>
 
-    <section class="chat">
-        <h2>Chat with Farmers</h2>
-        <div class="chat-box">
-            <p><strong>Farmer:</strong> Can you start tomorrow?</p>
-            <input type="text" placeholder="Type your message">
-            <button>Send</button>
+            <label for="wages">Minimum Wages:</label>
+            <input type="number" id="wages" placeholder="Enter amount">
+
+            <label for="date">Date:</label>
+            <input type="date" id="date">
+
+            <button class="filter-btn" onclick="applyFilters()"><i class="fas fa-filter"></i> Apply Filters</button>
         </div>
-    </section>
+
+        <!-- Job Listings -->
+        <div class="job-listings">
+            <h2>Available Jobs</h2>
+            <div class="job-card">
+                <h3>Farm Helper Needed</h3>
+                <p><strong>Location:</strong> Green Valley Farms</p>
+                <p><strong>Date:</strong> 6th Oct, 2024</p>
+                <p><strong>Timings:</strong> 12 PM - 6 PM</p>
+                <p><strong>Wages:</strong> ₹600</p>
+                <p><strong>Workers Required:</strong> 10</p>
+                <button class="apply-btn"><i class="fas fa-paper-plane"></i> Apply</button>
+            </div>
+            
+            <div class="job-card">
+                <h3>Harvest Worker</h3>
+                <p><strong>Location:</strong> Sunrise Fields</p>
+                <p><strong>Date:</strong> 6th Oct, 2024</p>
+                <p><strong>Timings:</strong> 8 AM - 2 PM</p>
+                <p><strong>Wages:</strong> ₹600</p>
+                <p><strong>Workers Required:</strong> 10</p>
+                <button class="apply-btn"><i class="fas fa-paper-plane"></i> Apply</button>
+            </div>
+
+            <button class="view-more-btn"><i class="fas fa-angle-down"></i> View More Jobs</button>
+        </div>
+    </div>
+
+    <script>
+        function applyFilters() {
+            alert("Filters applied! (Functionality to be implemented)");
+        }
+
+        document.getElementById("menu-toggle").addEventListener("click", function () {
+            document.getElementById("nav-links").classList.toggle("active");
+        });
+    </script>
+
 </body>
 </html>

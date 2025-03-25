@@ -6,44 +6,233 @@
     <title>Farmer's Dashboard</title>
 
     <link rel="stylesheet" href="assets/css/farmerjob.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="farmerjob.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        /* Left Side - Job Listings */
+        .job-listings {
+            width: 60%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .job {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background: #fff;
+        }
+
+        .job h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .job p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .job button {
+            margin-top: 10px;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .view-applicants {
+            background: #28a745;
+        }
+
+        .delete-job {
+            background: #dc3545;
+        }
+
+        /* Right Side - Job Posting Form */
+        .job-posting {
+            width: 35%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-posting form input, 
+        .job-posting form textarea, 
+        .job-posting form button {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .job-posting form button {
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Chat Section */
+        .chat {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-box input {
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .chat-box button {
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+    </style>
 </head>
 <body>
+
     <header>
         <h1>Farmer's Dashboard</h1>
     </header>
 
-    <section class="job-posting">
-        <h2>Post a Job</h2>
-        <form>
-            <input type="text" placeholder="Job Title" required>
-            <textarea placeholder="Job Description" required></textarea>
-            <input type="text" placeholder="Salary (per day/month)" required>
-            <input type="text" placeholder="Location" required>
-            <input type="text" placeholder="Duration (days/weeks)" required>
-            <button type="submit">Post Job</button>
-        </form>
-    </section>
+    <div class="container">
+        <!-- Left Side: Job Listings -->
+        <section class="job-listings">
+            <h2>Your Job Listings</h2>
+            <div class="job">
+                <h3>Farm Work - Harvesting</h3>
+                <p>Salary: ₹500/day | Duration: 7 days | Location: Hyderabad</p>
+                <button class="view-applicants">View Applicants</button>
+                <button class="delete-job">Delete</button>
+            </div>
+        </section>
 
-    <section class="job-listings">
-        <h2>Your Job Listings</h2>
-        <div class="job">
-            <h3>Farm Work - Harvesting</h3>
-            <p>Salary: ₹500/day | Duration: 7 days | Location: Hyderabad</p>
-            <button class="view-applicants">View Applicants</button>
-            <button class="delete-job">Delete</button>
-        </div>
-    </section>
+        <!-- Right Side: Job Posting Form -->
+        <section class="job-posting">
+            <h2>Post a Job</h2>
+            <form id="jobForm">
+                <input type="text" id="jobTitle" placeholder="Job Title" required>
+                <textarea id="jobDescription" placeholder="Job Description" required></textarea>
+                <input type="text" id="jobSalary" placeholder="Salary (per day/month)" required>
+                <input type="text" id="jobLocation" placeholder="Location" required>
+                <input type="text" id="jobDuration" placeholder="Duration (days/weeks)" required>
+                <button type="submit">Post Job</button>
+            </form>
+        </section>
+    </div>
 
+    <!-- Chat Section -->
     <section class="chat">
         <h2>Chat with Labourers</h2>
         <div class="chat-box">
             <p><strong>Labourer:</strong> Is this job still available?</p>
-            <input type="text" placeholder="Type your message">
-            <button>Send</button>
+            <input type="text" id="chatInput" placeholder="Type your message">
+            <button id="sendMessage">Send</button>
         </div>
     </section>
+
+    <script>
+        // Job Posting Functionality
+        document.getElementById('jobForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get values
+            const title = document.getElementById('jobTitle').value;
+            const description = document.getElementById('jobDescription').value;
+            const salary = document.getElementById('jobSalary').value;
+            const location = document.getElementById('jobLocation').value;
+            const duration = document.getElementById('jobDuration').value;
+
+            // Create job card
+            const jobList = document.querySelector('.job-listings');
+            const newJob = document.createElement('div');
+            newJob.classList.add('job');
+            newJob.innerHTML = `
+                <h3>${title}</h3>
+                <p>${description}</p>
+                <p>Salary: ${salary} | Duration: ${duration} | Location: ${location}</p>
+                <button class="view-applicants">View Applicants</button>
+                <button class="delete-job">Delete</button>
+            `;
+
+            jobList.appendChild(newJob);
+
+            // Clear form
+            document.getElementById('jobForm').reset();
+
+            // Add delete functionality
+            newJob.querySelector('.delete-job').addEventListener('click', function() {
+                newJob.remove();
+            });
+        });
+
+        // Delete Job Functionality
+        document.querySelectorAll('.delete-job').forEach(button => {
+            button.addEventListener('click', function() {
+                this.parentElement.remove();
+            });
+        });
+
+        // Chat Functionality
+        document.getElementById('sendMessage').addEventListener('click', function() {
+            const messageInput = document.getElementById('chatInput');
+            const message = messageInput.value;
+
+            if (message.trim() !== '') {
+                const chatBox = document.querySelector('.chat-box');
+                const newMessage = document.createElement('p');
+                newMessage.innerHTML = `<strong>You:</strong> ${message}`;
+                chatBox.insertBefore(newMessage, messageInput);
+                messageInput.value = '';
+            }
+        });
+    </script>
+
 </body>
 </html>
