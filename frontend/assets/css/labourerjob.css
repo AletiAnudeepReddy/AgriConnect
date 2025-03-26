@@ -1,63 +1,123 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f4f4f4;
 }
 
+/* Header */
 header {
-    background-color: #007bff;
+    background-color: #4A4947;
     color: white;
     text-align: center;
     padding: 15px;
-    font-size: 1.5em;
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-section {
-    width: 80%;
-    margin: 20px auto;
-    padding: 20px;
+/* Container Layout */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    gap: 30px;
+}
+
+/* Filters Section */
+.filter-section {
+    width: 30%;
     background: white;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.job {
-    background: #e3f2fd;
-    padding: 15px;
+.filter-section h2 {
+    text-align: center;
+    font-size: 20px;
+    color: #2d6a4f;
+}
+
+.filter-section label {
+    font-weight: bold;
     margin-top: 10px;
-    border-radius: 5px;
+    display: block;
 }
 
-.apply-job {
-    background: #28a745;
+.filter-section select,
+.filter-section input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.filter-btn {
+    background-color: #2d6a4f;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.filter-btn:hover {
+    background-color: #1b4d3e;
+}
+
+/* Job Listings */
+.job-listings {
+    width: 65%;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.job-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.job-card h3 {
+    color: #2d6a4f;
+    margin-bottom: 5px;
+}
+
+.apply-btn {
+    background-color: #2d6a4f;
     color: white;
     padding: 8px 12px;
     border: none;
     cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
 }
 
-.status {
-    font-weight: bold;
-    color: #ff9800;
+.apply-btn:hover {
+    background-color: #1b4d3e;
 }
 
-.chat-box {
-    background: #f1f1f1;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-.chat-box input {
-    width: 80%;
-    padding: 10px;
-}
-
-.chat-box button {
-    width: 15%;
-    padding: 10px;
-    background: #007bff;
+.view-more-btn {
+    width: 100%;
+    background-color: #2d6a4f;
     color: white;
+    padding: 10px;
     border: none;
     cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.view-more-btn:hover {
+    background-color: #1b4d3e;
 }
