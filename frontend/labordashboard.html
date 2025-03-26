@@ -58,25 +58,7 @@
         <!-- Job Listings Section -->
         <div class="job-listings">
             <h2>Available Jobs</h2>
-            <div class="job-card" data-job-id="1">
-                <h3>Farm Helper Needed</h3>
-                <p><strong>Location:</strong> <span class="job-location">Green Valley Farms</span></p>
-                <p><strong>Date:</strong> 6th Oct, 2024</p>
-                <p><strong>Timings:</strong> 12 PM - 6 PM</p>
-                <p><strong>Wages:</strong> ₹600</p>
-                <p><strong>Workers Required:</strong> 10</p>
-                <button class="apply-btn"><i class="fas fa-paper-plane"></i> Apply</button>
-            </div>
             
-            <div class="job-card" data-job-id="2">
-                <h3>Harvest Worker</h3>
-                <p><strong>Location:</strong> <span class="job-location">Sunrise Fields</span></p>
-                <p><strong>Date:</strong> 6th Oct, 2024</p>
-                <p><strong>Timings:</strong> 8 AM - 2 PM</p>
-                <p><strong>Wages:</strong> ₹600</p>
-                <p><strong>Workers Required:</strong> 10</p>
-                <button class="apply-btn"><i class="fas fa-paper-plane"></i> Apply</button>
-            </div>
             <button id="view-more-btn" class="view-more-btn">
                 <i class="fas fa-angle-down"></i> View More Jobs
             </button>
@@ -101,8 +83,8 @@
             <!-- Contact Info -->
             <div class="footer-section">
                 <h3>Contact Us</h3>
-                <p><i class="fas fa-phone"></i> <a href="tel:+919876543210">+91 98765 43210</a></p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:support@agriconnect.com">support@agriconnect.com</a></p>
+                <p><i class="fas fa-phone"></i> <a style="color: white;" href="tel:+919876543210">+91 98765 43210</a></p>
+                <p><i class="fas fa-envelope"></i> <a style="color: white;" href="mailto:support@agriconnect.com">support@agriconnect.com</a></p>
                 <p><i class="fas fa-location-dot"></i> Green Valley, India</p>
             </div>
     
@@ -140,52 +122,6 @@
     </script>
     
     
-    <script>
-        document.getElementById("menu-toggle").addEventListener("click", function () {
-    document.getElementById("nav-links").classList.toggle("active");
-});
-document.addEventListener("DOMContentLoaded", function () {
-    const currentJobContainer = document.getElementById("current-job-content");
-
-    // Mock data: Replace this with actual user data from backend
-    const userCurrentJob = {
-        jobTitle: "Harvest Worker",
-        location: "Sunrise Fields",
-        startTime: "8 AM",
-        endTime: "2 PM",
-        wages: "₹600",
-        liveLocation: "Tracking..."
-    };
-
-    // If no job is accepted
-    if (!userCurrentJob) {
-        currentJobContainer.innerHTML = `<p class="no-job-text">You have no active jobs. <br> Apply for a job now!</p>`;
-    } else {
-        // Display the active job details
-        currentJobContainer.innerHTML = `
-            <div class="job-active">
-    <!-- Live Location Button -->
-    <button class="location-btn" onclick="openLiveLocation('${userCurrentJob.liveLocationUrl}')">
-        <i class="fas fa-map-marker-alt"></i>
-    </button>
-
-    <div class="job-info">
-        <h3>Currently Working Job</h3>
-        <p><strong>Job:</strong> ${userCurrentJob.jobTitle}</p>
-        <p><strong>Location:</strong> ${userCurrentJob.location}</p>
-        <p><strong>Timings:</strong> ${userCurrentJob.startTime} - ${userCurrentJob.endTime}</p>
-        <p><strong>Wages:</strong> ${userCurrentJob.wages}</p>
-        <p><strong>Live Location:</strong> <span>${userCurrentJob.liveLocation}</span></p>
-    </div>
-
-    <!-- Call Farmer Button -->
-    <button class="call-btn" onclick="callFarmer('${userCurrentJob.farmerPhone}')">
-        <i class="fas fa-phone-alt"></i>
-    </button>
-</div>
-        `;
-    }
-});
-    </script>
+    <script src="assets/js/labordash.js"></script>
 </body>
 </html>

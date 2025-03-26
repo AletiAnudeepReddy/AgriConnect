@@ -604,6 +604,7 @@ body {
 .footer-section p,
 .footer-section ul {
     font-size: 14px;
+    margin: 3px;
 }
 
 .footer-section ul {
