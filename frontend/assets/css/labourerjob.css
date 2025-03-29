@@ -9,7 +9,6 @@ body {
 /* Header */
 header {
     background: url('https://www.transparenttextures.com/patterns/white-wave.png'); /* Subtle Texture */
-    
     background-color: #4A4947;
     color: white;
     text-align: center;
@@ -51,7 +50,7 @@ header {
 
 .filter-section select,
 .filter-section input {
-    width: 95%;
+    width: 100%;
     padding: 8px;
     margin-top: 5px;
     background-color: #f4f4f4;
@@ -100,7 +99,6 @@ header {
 }
 
 .apply-btn {
-    
     width: 100%;
     background-color: #D8D2C2;
     color: #4A4947;
@@ -128,4 +126,56 @@ header {
 
 .view-more-btn:hover {
     background-color: #B17457;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .filter-section,
+    .job-listings {
+        width: 90%;
+    }
+
+    .view-more-btn {
+        margin-left: 70%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .filter-section,
+    .job-listings {
+        width: 100%;
+    }
+
+    .view-more-btn {
+        margin-left: 60%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .filter-section,
+    .job-listings {
+        width: 100%;
+        padding: 15px;
+    }
+
+    header {
+        font-size: 14px;
+        height: auto;
+        padding: 15px;
+    }
+
+    .view-more-btn {
+        margin-left: 50%;
+    }
 }
