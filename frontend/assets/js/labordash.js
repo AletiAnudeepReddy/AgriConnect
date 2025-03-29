@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", function () {
+        navLinks.classList.toggle("active"); // Show/Hide menu on click
+    });
+
     const jobListingsContainer = document.querySelector(".job-listings");
 
     // Sample job data (can be modified dynamically)
