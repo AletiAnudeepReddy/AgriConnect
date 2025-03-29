@@ -8,11 +8,14 @@ body {
 
 /* Header */
 header {
+    background: url('https://www.transparenttextures.com/patterns/white-wave.png'); /* Subtle Texture */
+    
     background-color: #4A4947;
     color: white;
     text-align: center;
-    padding: 15px;
-    font-size: 22px;
+    padding: 10px;
+    font-size: 15px;
+    height: 10vh;
     font-weight: bold;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -48,27 +51,28 @@ header {
 
 .filter-section select,
 .filter-section input {
-    width: 100%;
+    width: 95%;
     padding: 8px;
     margin-top: 5px;
+    background-color: #f4f4f4;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
 .filter-btn {
-    background-color: #2d6a4f;
-    color: white;
+    background-color: #D8D2C2;
+    color: #4A4947;
     padding: 10px;
     border: none;
     cursor: pointer;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 20px;
     border-radius: 4px;
     font-size: 16px;
 }
 
 .filter-btn:hover {
-    background-color: #1b4d3e;
+    background-color: #B17457;
 }
 
 /* Job Listings */
@@ -81,21 +85,25 @@ header {
 }
 
 .job-card {
-    background-color: #fff;
-    padding: 15px;
+    background-color: #f4f4f4;
+    padding: 10px 30px;
     border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 15px;
 }
 
 .job-card h3 {
-    color: #2d6a4f;
+    color: #4A4947;
+    text-decoration: underline;
+    text-align: center;
     margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 .apply-btn {
-    background-color: #2d6a4f;
-    color: white;
+    
+    width: 100%;
+    background-color: #D8D2C2;
+    color: #4A4947;
     padding: 8px 12px;
     border: none;
     cursor: pointer;
@@ -104,13 +112,13 @@ header {
 }
 
 .apply-btn:hover {
-    background-color: #1b4d3e;
+    background-color: #B17457;
 }
 
 .view-more-btn {
-    width: 100%;
-    background-color: #2d6a4f;
-    color: white;
+    margin-left: 80%;
+    background-color: #D8D2C2;
+    color: #4A4947;
     padding: 10px;
     border: none;
     cursor: pointer;
@@ -119,5 +127,5 @@ header {
 }
 
 .view-more-btn:hover {
-    background-color: #1b4d3e;
+    background-color: #B17457;
 }
