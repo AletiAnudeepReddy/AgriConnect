@@ -3,11 +3,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+
 const farmerAuthRoutes = require('./routes/farmerauthroutes');  // Farmer Auth Routes
-const laborerAuthRoutes = require('./routes/laborerAuthRoutes'); // Laborer Auth Routes
+const laborerAuthRoutes = require('./routes/laborerauthroute'); // Laborer Auth Routes
 const farmerRoutes = require('./routes/farmerRoutes');  // Farmer Operations
 const laborerRoutes = require('./routes/laborerRoutes'); // Laborer Operations
-const protectedRoutes = require('./routes/protectedRoutes'); // Auth-Protected Routes
+const protectedRoutes = require('./routes/protectedroute'); // Auth-Protected Routes
 
 // Initialize Express App
 const app = express();

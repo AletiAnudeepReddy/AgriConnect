@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 
+
 dotenv.config(); // Load environment variables
 
 const authenticateUser = (req, res, next) => {
