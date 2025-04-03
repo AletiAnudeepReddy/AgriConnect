@@ -6,8 +6,8 @@ const cors = require('cors');
 
 const farmerAuthRoutes = require('./routes/farmerauthroutes');  // Farmer Auth Routes
 const laborerAuthRoutes = require('./routes/laborerauthroute'); // Laborer Auth Routes
-const farmerRoutes = require('./routes/farmerRoutes');  // Farmer Operations
-const laborerRoutes = require('./routes/laborerRoutes'); // Laborer Operations
+//const farmerRoutes = require('./routes/farmerRoutes');  // Farmer Operations
+//const laborerRoutes = require('./routes/laborerRoutes'); // Laborer Operations
 const protectedRoutes = require('./routes/protectedroute'); // Auth-Protected Routes
 
 // Initialize Express App
@@ -28,8 +28,8 @@ mongoose.connect(process.env.MONGO_URI, {
 // Routes
 app.use('/api/auth/farmers', farmerAuthRoutes); // Authentication for Farmers
 app.use('/api/auth/laborers', laborerAuthRoutes); // Authentication for Laborers
-app.use('/api/farmers', farmerRoutes); // Farmer-Specific Routes
-app.use('/api/laborers', laborerRoutes); // Laborer-Specific Routes
+//app.use('/api/farmers', farmerRoutes); // Farmer-Specific Routes
+//app.use('/api/laborers', laborerRoutes); // Laborer-Specific Routes
 app.use('/protected', protectedRoutes); // Protected Routes (Requires Auth)
 
 // Default Route
