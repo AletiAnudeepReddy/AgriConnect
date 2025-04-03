@@ -8,7 +8,7 @@ const farmerAuthRoutes = require('./routes/farmerauthroutes');  // Farmer Auth R
 const laborerAuthRoutes = require('./routes/laborerauthroute'); // Laborer Auth Routes
 //const farmerRoutes = require('./routes/farmerRoutes');  // Farmer Operations
 //const laborerRoutes = require('./routes/laborerRoutes'); // Laborer Operations
-const protectedRoutes = require('./routes/protectedroute'); // Auth-Protected Routes
+const protectedRoutes = require('./routes/protectedroute'); 
 
 // Initialize Express App
 const app = express();
