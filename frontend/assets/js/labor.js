@@ -1,6 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
     const registerForm = document.getElementById("laborer-register-form");
+    function showError(message) {
+        const box = document.createElement("div");
+        box.className = "error-box";
+        box.textContent = message;
+        document.body.appendChild(box);
+        setTimeout(() => box.remove(), 3000);
+    }
 
+    function showSuccess(message) {
+        const box = document.createElement("div");
+        box.className = "success-box";
+        box.textContent = message;
+        document.body.appendChild(box);
+        setTimeout(() => box.remove(), 2000);
+    }
     if (registerForm) {
         registerForm.addEventListener("submit", async function (event) {
             event.preventDefault();
@@ -64,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (response.ok) {
                     showSuccess("Registration successful! Redirecting...");
                     setTimeout(() => {
-                        window.location.href = "/labordashboard.html";
+                        window.location.href = "/frontend/labordashboard.html";
                     }, 2000);
                 } else {
                     showError(data.message || "Registration failed. Please try again.");
@@ -104,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (response.ok) {
                     showSuccess("Login successful! Redirecting...");
                     setTimeout(() => {
-                        window.location.href = "labordashboard.html";
+                        window.location.href = "./labordashboard.html";
                     }, 1500);
                 } else {
                     showError(data.message || "Invalid credentials.");
@@ -115,25 +129,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function showError(message) {
-        const errorBox = document.createElement("div");
-        errorBox.className = "error-box";
-        errorBox.textContent = message;
-        document.body.appendChild(errorBox);
-
-        setTimeout(() => {
-            errorBox.remove();
-        }, 3000);
-    }
-
-    function showSuccess(message) {
-        const successBox = document.createElement("div");
-        successBox.className = "success-box";
-        successBox.textContent = message;
-        document.body.appendChild(successBox);
-
-        setTimeout(() => {
-            successBox.remove();
-        }, 2000);
-    }
+    
 });
