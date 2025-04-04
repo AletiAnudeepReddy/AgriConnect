@@ -1,15 +1,32 @@
-/* General Styles */
+/* 🌟 Global Animations */
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes subtleFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 🌟 General Styles */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    animation: subtleFadeIn 1s ease-in;
 }
 
-/* Header */
+/* 🌟 Header */
 header {
-    background: url('https://www.transparenttextures.com/patterns/white-wave.png'); /* Subtle Texture */
-    
+    background: url('https://www.transparenttextures.com/patterns/white-wave.png'); 
     background-color: #4A4947;
     color: white;
     text-align: center;
@@ -18,28 +35,31 @@ header {
     font-size: 10;
     font-weight: bold;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeSlideIn 1s ease-in-out;
 }
 
-/* Container Layout */
+/* 🌟 Container Layout */
 .container {
     display: flex;
     justify-content: space-between;
     padding: 30px;
     gap: 30px;
+    animation: fadeSlideIn 1s ease;
 }
 
-/* Job Posting Section */
+/* 🌟 Job Posting Section */
 .job-posting {
     width: 35%;
     background: white;
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    animation: fadeSlideIn 1s ease-in-out;
 }
 
 .job-posting:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
 }
 
 .job-posting h2 {
@@ -47,6 +67,7 @@ header {
     font-size: 22px;
     color: #2d3748;
     margin-bottom: 20px;
+    transition: color 0.3s;
 }
 
 .job-posting form label {
@@ -63,14 +84,16 @@ header {
     border-radius: 6px;
     font-size: 16px;
     background-color: #f4f4f4;
-    transition: border 0.2s;
+    transition: border 0.2s, box-shadow 0.3s ease;
 }
 
 .job-posting form input:focus {
     border-color: #4A4947;
+    box-shadow: 0 0 5px rgba(74, 73, 71, 0.4);
     outline: none;
 }
 
+/* 🌟 Time Inputs */
 .time-inputs {
     display: flex;
     align-items: center;
@@ -81,6 +104,7 @@ header {
     flex: 1;
 }
 
+/* 🌟 Submit Button */
 .job-posting form button {
     width: 100%;
     padding: 12px;
@@ -92,46 +116,52 @@ header {
     margin-top: 15px;
     border-radius: 6px;
     font-weight: 600;
-    transition: background 0.3s ease-in-out;
+    transition: background 0.4s ease, transform 0.2s ease;
 }
 
 .job-posting form button:hover {
     background: #B17457;
+    transform: scale(1.03);
 }
 
-/* Job Listings */
+/* 🌟 Job Listings */
 .job-listings {
     width: 60%;
     background: white;
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeSlideIn 1s ease-in;
 }
 
 .job-listings h2 {
     font-size: 22px;
     color: #2d3748;
     margin-bottom: 20px;
+    transition: color 0.3s;
 }
 
-/* Individual Job Card */
+/* 🌟 Individual Job Card */
 .job {
     border: 1px solid #cbd5e0;
     padding: 18px;
     margin-bottom: 15px;
     border-radius: 8px;
     background: #f7fafc;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s;
+    animation: fadeSlideIn 0.6s ease;
 }
 
 .job:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
 .job h3 {
     margin: 0;
     color: #2d3748;
     font-size: 20px;
+    transition: color 0.3s;
 }
 
 .job p {
@@ -140,7 +170,7 @@ header {
     margin: 5px 0;
 }
 
-/* Buttons */
+/* 🌟 Buttons */
 .job button {
     margin-top: 10px;
     padding: 8px 14px;
@@ -149,11 +179,12 @@ header {
     color: white;
     border-radius: 6px;
     font-weight: 600;
-    transition: opacity 0.2s ease-in-out;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .job button:hover {
-    opacity: 0.8;
+    opacity: 0.85;
+    transform: scale(1.05);
 }
 
 .edit-job {
@@ -164,7 +195,7 @@ header {
     background: #e53e3e;
 }
 
-/* Responsive Design */
+/* 🌟 Responsive Design */
 @media (max-width: 900px) {
     .container {
         flex-direction: column;
@@ -175,5 +206,14 @@ header {
     .job-posting,
     .job-listings {
         width: 100%;
+    }
+
+    .job h3 {
+        font-size: 18px;
+    }
+
+    .job-posting h2,
+    .job-listings h2 {
+        font-size: 20px;
     }
 }

@@ -4,6 +4,23 @@ body {
     background-color: #f9f9f9;
     margin: 0;
     padding: 0;
+    animation: fadeInBody 1s ease-in;
+}
+
+/* 🌟 Animations */
+@keyframes fadeInBody {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideFill {
+    from { width: 0%; }
+    to { width: 100%; }
 }
 
 /* 🌟 Header */
@@ -14,13 +31,14 @@ header {
     padding: 15px;
     font-size: 1.2rem;
     font-weight: 600;
+    animation: fadeSlide 1s ease-in-out;
 }
 
 /* 🌟 Navigation Bar */
 nav {
     display: flex;
     justify-content: center;
-    background: #393535    ;
+    background: #393535;
     padding: 8px 0;
 }
 
@@ -37,12 +55,14 @@ nav ul li {
     color: white;
     font-weight: 500;
     font-size: 0.95rem;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
-nav ul li:hover, nav ul li.active {
+nav ul li:hover,
+nav ul li.active {
     background: #27ae60;
     border-radius: 4px;
+    transform: scale(1.05);
 }
 
 /* 🌟 Content Sections */
@@ -55,14 +75,22 @@ nav ul li:hover, nav ul li.active {
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
     border-radius: 6px;
     border: 1px solid #ddd;
+    animation: fadeSlide 0.8s ease-in-out;
 }
-.laborer{
+
+.tab-content.active {
+    display: block;
+}
+
+.laborer {
     background-color: #f4f4f4;
     padding: 10px 20px;
     margin: 15px;
+    transition: background-color 0.4s;
 }
-.tab-content.active {
-    display: block;
+
+.laborer:hover {
+    background-color: #eaeaea;
 }
 
 /* 🌟 Rating Section */
@@ -73,12 +101,20 @@ nav ul li:hover, nav ul li.active {
     margin-bottom: 15px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06);
     border: 1px solid #ddd;
+    animation: fadeSlide 0.8s ease-in;
+    transition: transform 0.3s;
 }
 
+.farmer-rating:hover, .laborer-rating:hover {
+    transform: translateY(-5px);
+}
+
+/* 🌟 Headings */
 h2 {
     color: #2c3e50;
     font-size: 1.2rem;
     margin-bottom: 10px;
+    transition: color 0.3s;
 }
 
 h3 {
@@ -92,12 +128,13 @@ h3 {
     font-size: 35px;
     color: #dcdcdc;
     cursor: pointer;
+    transition: transform 0.2s;
 }
 
 .star:hover,
 .star.active {
     color: #ffcc00;
-    transition: 0.3s ease;
+    transform: scale(1.1);
 }
 
 /* 🌟 Textarea Styling */
@@ -111,6 +148,11 @@ textarea {
     font-size: 14px;
     resize: none;
     margin-top: 6px;
+    transition: box-shadow 0.3s;
+}
+
+textarea:focus {
+    box-shadow: 0 0 5px rgba(39, 174, 96, 0.5);
 }
 
 /* 🌟 Submit Button */
@@ -126,11 +168,12 @@ button.submit-rating {
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.3s;
 }
 
 button.submit-rating:hover {
     background: #219150;
+    transform: translateY(-2px);
 }
 
 /* 🌟 Rating Summary */
@@ -142,9 +185,10 @@ button.submit-rating:hover {
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 10px;
+    animation: fadeSlide 0.8s ease;
 }
 
-/* 🌟 Reviews Section */
+/* 🌟 Rating Distribution */
 .rating-distribution {
     padding: 10px 0;
 }
@@ -168,6 +212,7 @@ button.submit-rating:hover {
     background: gold;
     height: 100%;
     border-radius: 5px;
+    
 }
 
 /* 🌟 Reviews Section */
@@ -181,6 +226,12 @@ button.submit-rating:hover {
     border-radius: 5px;
     margin-bottom: 10px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    animation: fadeSlide 0.8s ease;
+    transition: transform 0.3s;
+}
+
+.review:hover {
+    transform: scale(1.02);
 }
 
 .review h4 {
