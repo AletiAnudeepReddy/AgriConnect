@@ -1,224 +1,151 @@
 document.addEventListener("DOMContentLoaded", function () {
     const registerForm = document.getElementById("register-form");
-
-    registerForm.addEventListener("submit", async function (event) {
-        event.preventDefault(); // Prevent default form submission
-
-        const fullname = registerForm.fullname.value.trim();
-        const email = registerForm.email.value.trim();
-        const phone = registerForm.phone.value.trim();
-        const password = registerForm.password.value.trim();
-        const confirmPassword = registerForm.confirm_password.value.trim();
-        const farmLocation = registerForm.farm_location.value.trim();
-        const farmSize = parseInt(registerForm.farm_size.value.trim());
-        const termsAccepted = registerForm.terms.checked;
-
-        // Regular expressions for validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const phoneRegex = /^[0-9]{10}$/; // Validates 10-digit phone numbers
-
-        // Validation checks
-        if (!fullname || !email || !phone || !password || !farmLocation || !farmSize) {
-            showError("All fields are required.");
-            return;
-        }
-
-        if (!emailRegex.test(email)) {
-            showError("Invalid email format.");
-            return;
-        }
-
-        if (!phoneRegex.test(phone)) {
-            showError("Phone number must be 10 digits.");
-            return;
-        }
-
-        if (password.length < 6) {
-            showError("Password must be at least 6 characters long.");
-            return;
-        }
-
-        if (password !== confirmPassword) {
-            showError("Passwords do not match.");
-            return;
-        }
-
-        if (!termsAccepted) {
-            showError("You must agree to the Terms & Conditions.");
-            return;
-        }
-
-        // Prepare data to send to backend
-        const farmerData = {
-            fullname: fullname,
-            email: email,
-            phone: phone,
-            password: password,
-            farm_location: farmLocation,
-            farm_size: farmSize
-        };
-
-        try {
-            const response = await fetch("http://localhost:8000/api/auth/farmers/register", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(farmerData)
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                showSuccess("Registration successful! Redirecting to login...");
-                
-                // Redirect to login page after 2 seconds
-                setTimeout(() => {
-                    window.location.href = "loginfarmer.html";
-                }, 2000);
-            } else {
-                showError(data.message || "Registration failed.");
-            }
-        } catch (error) {
-            showError("Network error. Please try again.");
-        }
-    });
-
-    // Function to show error messages
-    function showError(message) {
-        const errorBox = document.createElement("div");
-        errorBox.className = "error-box";
-        errorBox.textContent = message;
-        document.body.appendChild(errorBox);
-
-        setTimeout(() => {
-            errorBox.remove();
-        }, 3000);
-    }
-
-    // Function to show success messages
-    function showSuccess(message) {
-        const successBox = document.createElement("div");
-        successBox.className = "success-box";
-        successBox.textContent = message;
-        document.body.appendChild(successBox);
-
-        setTimeout(() => {
-            successBox.remove();
-        }, 2000);
-    }
     const loginForm = document.getElementById("login-form");
 
-    // Validate the form before submission
-    loginForm.addEventListener("submit", async function (event) {
-        event.preventDefault(); // Prevent default form submission
-
-        const emailInput = loginForm.email.value.trim();
-        const passwordInput = loginForm.password.value.trim();
-
-        // Regular expressions for validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const phoneRegex = /^[0-9]{10}$/; // Validates 10-digit phone numbers
-
-        // Check if the email/phone is valid
-        if (!emailRegex.test(emailInput) && !phoneRegex.test(emailInput)) {
-            showError("Please enter a valid email or phone number.");
-            return;
-        }
-
-        // Check if password is entered
-        if (passwordInput.length < 6) {
-            showError("Password must be at least 6 characters long.");
-            return;
-        }
-
-        // Show loading message
-        showSuccess("Logging in...");
-
-        try {
-            // Make API call to login endpoint
-            const response = await fetch("http://localhost:8000/api/auth/farmers/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    email: emailInput,
-                    password: passwordInput
-                })
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                // Save token in localStorage
-                localStorage.setItem("token", data.token);
-                
-                // Redirect to dashboard or homepage
-                showSuccess("Login successful! Redirecting...");
-                setTimeout(() => {
-                    window.location.href = "/farmerdashboard.html"; // Change to your dashboard URL
-                }, 2000);
-            } else {
-                showError(data.message || "Invalid credentials. Please try again.");
-            }
-        } catch (error) {
-            showError("Server error. Please try again later.");
-            console.error("Login Error:", error);
-        }
-    });
-
-    // Function to show error messages
+    // ---------- Message utilities ---------- //
     function showError(message) {
-        const errorBox = document.createElement("div");
-        errorBox.className = "error-box";
-        errorBox.textContent = message;
-        document.body.appendChild(errorBox);
-
-        setTimeout(() => {
-            errorBox.remove();
-        }, 3000);
+        const box = document.createElement("div");
+        box.className = "error-box";
+        box.textContent = message;
+        document.body.appendChild(box);
+        setTimeout(() => box.remove(), 3000);
     }
 
-    // Function to show success messages
     function showSuccess(message) {
-        const successBox = document.createElement("div");
-        successBox.className = "success-box";
-        successBox.textContent = message;
-        document.body.appendChild(successBox);
-
-        setTimeout(() => {
-            successBox.remove();
-        }, 2000);
+        const box = document.createElement("div");
+        box.className = "success-box";
+        box.textContent = message;
+        document.body.appendChild(box);
+        setTimeout(() => box.remove(), 2000);
     }
 
-    // Toggle password visibility
+    // ---------- Register form ---------- //
+    if (registerForm) {
+        registerForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const fullname = registerForm.fullname.value.trim();
+            const email = registerForm.email.value.trim();
+            const phone = registerForm.phone.value.trim();
+            const password = registerForm.password.value.trim();
+            const confirmPassword = registerForm.confirm_password.value.trim();
+            const farmLocation = registerForm.farm_location.value.trim();
+            const farmSize = parseInt(registerForm.farm_size.value.trim());
+            const termsAccepted = registerForm.terms.checked;
+
+            if (!fullname || !email || !phone || !password || !farmLocation || !farmSize) {
+                return showError("All fields are required.");
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                return showError("Invalid email.");
+            }
+            if (!/^[0-9]{10}$/.test(phone)) {
+                return showError("Phone number must be 10 digits.");
+            }
+            if (password.length < 6) {
+                return showError("Password too short.");
+            }
+            if (password !== confirmPassword) {
+                return showError("Passwords don't match.");
+            }
+            if (!termsAccepted) {
+                return showError("Accept the terms to proceed.");
+            }
+
+            const farmerData = {
+                fullname,
+                email,
+                phone,
+                password,
+                farm_location: farmLocation,
+                farm_size: farmSize
+            };
+
+            try {
+                const res = await fetch("http://localhost:8000/api/auth/farmers/register", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(farmerData)
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    showSuccess("Registered successfully!");
+                    setTimeout(() => window.location.href = "loginfarmer.html", 2000);
+                } else {
+                    showError(data.message || "Registration failed.");
+                }
+            } catch (err) {
+                showError("Server error. Try again.");
+            }
+        });
+    }
+
+    // ---------- Login form ---------- //
+    if (loginForm) {
+        loginForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const email = loginForm.email.value.trim();
+            const password = loginForm.password.value.trim();
+
+            if (!email || !password) {
+                return showError("Enter email and password.");
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && !/^[0-9]{10}$/.test(email)) {
+                return showError("Invalid email or phone.");
+            }
+            if (password.length < 6) {
+                return showError("Password too short.");
+            }
+
+            try {
+                const res = await fetch("http://localhost:8000/api/auth/farmers/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    showSuccess("Login successful!");
+                    setTimeout(() => window.location.href = "/farmerdashboard.html", 2000);
+                } else {
+                    showError(data.message || "Invalid credentials.");
+                }
+            } catch (err) {
+                showError("Server error. Try again.");
+            }
+        });
+    }
+
+    // ---------- Password eye toggle ---------- //
     const passwordField = document.querySelector("input[name='password']");
-    const passwordIcon = document.createElement("i");
-    passwordIcon.classList.add("fas", "fa-eye");
-    passwordIcon.style.cursor = "pointer";
-    passwordField.parentNode.appendChild(passwordIcon);
+    if (passwordField) {
+        const icon = document.createElement("i");
+        icon.classList.add("fas", "fa-eye");
+        icon.style.cursor = "pointer";
+        passwordField.parentNode.appendChild(icon);
 
-    passwordIcon.addEventListener("click", function () {
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            passwordIcon.classList.replace("fa-eye", "fa-eye-slash");
-        } else {
-            passwordField.type = "password";
-            passwordIcon.classList.replace("fa-eye-slash", "fa-eye");
-        }
-    });
+        icon.addEventListener("click", () => {
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                icon.classList.replace("fa-eye", "fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                icon.classList.replace("fa-eye-slash", "fa-eye");
+            }
+        });
+    }
 
-    // Add floating label effect on input focus
+    // ---------- Floating labels ---------- //
     const inputs = document.querySelectorAll("input");
     inputs.forEach(input => {
-        input.addEventListener("focus", function () {
-            this.parentElement.classList.add("focus");
-        });
-        input.addEventListener("blur", function () {
-            if (this.value === "") {
-                this.parentElement.classList.remove("focus");
-            }
+        input.addEventListener("focus", () => input.parentElement.classList.add("focus"));
+        input.addEventListener("blur", () => {
+            if (input.value === "") input.parentElement.classList.remove("focus");
         });
     });
 });

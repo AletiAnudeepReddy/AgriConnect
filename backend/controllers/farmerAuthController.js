@@ -1,6 +1,5 @@
 const Farmer = require('../models/Farmer');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 
 // Register Farmer
 exports.registerFarmer = async (req, res) => {
@@ -28,7 +27,7 @@ exports.registerFarmer = async (req, res) => {
     }
 };
 
-// Login Farmer
+// Login Farmer (No token generation)
 exports.loginFarmer = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -39,9 +38,7 @@ exports.loginFarmer = async (req, res) => {
         const isMatch = await bcrypt.compare(password, farmer.password);
         if (!isMatch) return res.status(400).json({ message: 'Invalid email or password' });
 
-        const token = jwt.sign({ id: farmer._id, role: 'farmer' }, 'your_secret_key', { expiresIn: '1d' });
-
-        res.status(200).json({ message: 'Login successful', token });
+        res.status(200).json({ message: 'Login successful' });
     } catch (error) {
         res.status(500).json({ message: 'Server Error', error });
     }

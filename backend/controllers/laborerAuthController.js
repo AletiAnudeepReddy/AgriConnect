@@ -1,6 +1,5 @@
 const Laborer = require('../models/Labor');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 
 // Register Laborer
 exports.registerLaborer = async (req, res) => {
@@ -28,7 +27,7 @@ exports.registerLaborer = async (req, res) => {
     }
 };
 
-// Login Laborer
+// Login Laborer (No token generation)
 exports.loginLaborer = async (req, res) => {
     try {
         const { phone, password } = req.body;
@@ -39,9 +38,7 @@ exports.loginLaborer = async (req, res) => {
         const isMatch = await bcrypt.compare(password, laborer.password);
         if (!isMatch) return res.status(400).json({ message: 'Invalid phone number or password' });
 
-        const token = jwt.sign({ id: laborer._id, role: 'laborer' }, 'your_secret_key', { expiresIn: '1d' });
-
-        res.status(200).json({ message: 'Login successful', token });
+        res.status(200).json({ message: 'Login successful' });
     } catch (error) {
         res.status(500).json({ message: 'Server Error', error });
     }
