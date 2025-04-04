@@ -1,4 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const nameEl = document.getElementById("laborer-name");
+    const workTypeEl = document.getElementById("laborer-work-type");
+    const experienceEl = document.getElementById("laborer-experience");
+    const locationEl = document.getElementById("laborer-location");
+
+    const name = localStorage.getItem("laborerName");
+    const workType = localStorage.getItem("laborerWorkType");
+    const experience = localStorage.getItem("laborerExperience");
+    const location = localStorage.getItem("laborerLocation");
+
+    if (nameEl) nameEl.textContent = name || "Laborer";
+    if (workTypeEl) workTypeEl.textContent = workType || "N/A";
+    if (experienceEl) experienceEl.textContent = experience || "0";
+    if (locationEl) locationEl.textContent = location || "Unknown";
+    
     const menuToggle = document.getElementById("menu-toggle");
     const navLinks = document.querySelector(".nav-links");
 

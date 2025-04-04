@@ -111,6 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (res.ok) {
                     showSuccess("Login successful!");
+                    localStorage.setItem("farmerName", data.fullname); 
                     setTimeout(() => window.location.href = "/frontend/farmerdashboard.html", 2000);
                 } else {
                     showError(data.message || "Invalid credentials.");

@@ -462,7 +462,7 @@ body {
 /* Additional User Details Styling */
 .profile-section span {
     font-weight: normal;
-    color: #E4D5C3; /* Light Cream for contrast */
+    color: #4A4947; /* Light Cream for contrast */
 }
 @media screen and (max-width: 600px) {
     .dashboard-container {

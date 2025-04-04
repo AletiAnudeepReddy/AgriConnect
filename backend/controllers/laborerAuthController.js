@@ -38,7 +38,11 @@ exports.loginLaborer = async (req, res) => {
         const isMatch = await bcrypt.compare(password, laborer.password);
         if (!isMatch) return res.status(400).json({ message: 'Invalid phone number or password' });
 
-        res.status(200).json({ message: 'Login successful' });
+        res.status(200).json({ message: 'Login successful',
+            fullname: laborer.fullname,
+            skills: laborer.skills,
+            experience: laborer.experience,
+            location: laborer.location });
     } catch (error) {
         res.status(500).json({ message: 'Server Error', error });
     }

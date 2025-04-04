@@ -1,4 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const nameElement = document.getElementById("farmer-name");
+    const storedName = localStorage.getItem("farmerName");
+
+    if (storedName && nameElement) {
+        nameElement.textContent = storedName;
+    }
+    const logoutButton = document.getElementById("logout");
+
+    if (logoutButton) {
+        logoutButton.addEventListener("click", function (e) {
+            e.preventDefault(); // Prevents default link behavior
+
+            // ✅ Clear stored user data
+            localStorage.removeItem("farmerName");
+
+            // ✅ Redirect to the login page
+            window.location.href = "loginfarmer.html";
+        });
+    }
     const menuToggle = document.getElementById("menu-toggle");
     const navLinks = document.querySelector(".nav-links");
 

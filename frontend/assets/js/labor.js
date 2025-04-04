@@ -116,6 +116,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 const data = await response.json();
 
                 if (response.ok) {
+                    localStorage.setItem("laborerName", data.fullname);
+                    localStorage.setItem("laborerWorkType", data.skills);
+                    localStorage.setItem("laborerExperience", data.experience);
+                    localStorage.setItem("laborerLocation", data.location);
                     showSuccess("Login successful! Redirecting...");
                     setTimeout(() => {
                         window.location.href = "./labordashboard.html";
