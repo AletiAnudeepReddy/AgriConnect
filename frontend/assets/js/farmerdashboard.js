@@ -120,10 +120,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Initial fetch
     if (farmerId) fetchJobs();
-    jobCard.querySelector(".complete-btn").addEventListener("click", () => {
-        jobCard.classList.add("completed");
-        jobCard.querySelector(".complete-btn").disabled = true;
-        jobCard.querySelector(".complete-btn").innerHTML = `<i class="fas fa-check-circle"></i> Done`;
-    });
-    
+  
 });
