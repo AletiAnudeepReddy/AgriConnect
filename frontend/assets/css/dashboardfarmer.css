@@ -225,7 +225,7 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 25px 25px 30px 25px;
-    height: 80vh;
+    height: auto;
     background: url('https://www.transparenttextures.com/patterns/white-wave.png'); /* Subtle Texture */
     background-color: #f4f4f4; /* Matches theme */
     animation: fadeInUp 1s ease-in-out;
@@ -657,6 +657,16 @@ body {
 .job-form button:hover {
     background: #219150;
 }
+.job.completed {
+    background-color: #e0ffe0;
+    border-left: 5px solid green;
+    opacity: 0.9;
+}
+.job-actions button.complete-btn:disabled {
+    background-color: #9ccc9c;
+    cursor: not-allowed;
+}
+
 
 /* Animations */
 @keyframes fadeIn {

@@ -38,7 +38,7 @@ exports.loginFarmer = async (req, res) => {
         const isMatch = await bcrypt.compare(password, farmer.password);
         if (!isMatch) return res.status(400).json({ message: 'Invalid email or password' });
 
-        res.status(200).json({ message: 'Login successful', fullname: farmer.fullname });
+        res.status(200).json({ message: 'Login successful', fullname: farmer.fullname ,_id: farmer._id});
     } catch (error) {
         res.status(500).json({ message: 'Server Error', error });
     }

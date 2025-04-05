@@ -1,8 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const { createJob, getAllJobs } = require('../controllers/jobcontroller');
+
+const {
+  createJob,
+  deleteJob,
+  getAllJobs,
+  getJobsByFarmerId
+} = require('../controllers/jobcontroller');
 
 router.post('/create', createJob);
-router.get('/all', getAllJobs); // This is for laborers
+router.get('/all', getAllJobs);
+router.get('/farmer/:farmerId', getJobsByFarmerId);
+router.delete('/:jobId', deleteJob);
 
 module.exports = router;

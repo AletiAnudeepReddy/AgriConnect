@@ -48,3 +48,38 @@ exports.getAllJobs = async (req, res) => {
     res.status(500).json({ error: "Server error while fetching jobs" });
   }
 };
+
+exports.getJobsByFarmerId = async (req, res) => {
+  try {
+    const { farmerId } = req.params;
+    const jobs = await Job.find({ farmer_id: farmerId });
+
+    if (!jobs || jobs.length === 0) {
+      return res.status(404).json({ error: "No jobs found for this farmer" });
+    }
+
+    res.status(200).json(jobs);
+  } catch (err) {
+    console.error("Error in getJobsByFarmerId:", err);
+    res.status(500).json({ error: "Server error while fetching jobs by farmer" });
+  }
+};
+
+// @desc   Delete a job by ID
+// @route  DELETE /jobs/:jobId
+exports.deleteJob = async (req, res) => {
+  try {
+    const jobId = req.params.jobId;
+
+    const deletedJob = await Job.findByIdAndDelete(jobId);
+
+    if (!deletedJob) {
+      return res.status(404).json({ error: "Job not found" });
+    }
+
+    res.status(200).json({ message: "Job deleted successfully", deletedJob });
+  } catch (err) {
+    console.error("Error in deleteJob:", err);
+    res.status(500).json({ error: "Server error while deleting job" });
+  }
+};
