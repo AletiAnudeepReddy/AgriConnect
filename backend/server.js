@@ -8,6 +8,9 @@ const laborerAuthRoutes = require('./routes/laborerauthroute'); // Laborer Auth 
 // const farmerRoutes = require('./routes/farmerRoutes');  // Farmer Operations
 // const laborerRoutes = require('./routes/laborerRoutes'); // Laborer Operations
 const jobRoutes = require('./routes/jobroutes');
+const applicantRoutes = require("./routes/Applicantsroute");
+
+
 
 
 // Initialize Express App
@@ -31,6 +34,7 @@ app.use('/api/auth/laborers', laborerAuthRoutes);  // Authentication for Laborer
 // app.use('/api/farmers', farmerRoutes);           // Optional: Farmer Routes
 // app.use('/api/laborers', laborerRoutes);         // Optional: Laborer Routes
 app.use('/jobs', jobRoutes);
+app.use("/api/applicants", applicantRoutes);
 
 
 // Default Route
