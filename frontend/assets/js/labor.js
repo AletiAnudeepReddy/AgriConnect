@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (response.ok) {
                     showSuccess("Registration successful! Redirecting...");
                     setTimeout(() => {
-                        window.location.href = "/frontend/labordashboard.html";
+                        window.location.href = "./loginlabor.html";
                     }, 2000);
                 } else {
                     showError(data.message || "Registration failed. Please try again.");
