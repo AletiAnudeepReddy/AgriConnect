@@ -10,51 +10,52 @@ document.addEventListener("DOMContentLoaded", function () {
     const workType = localStorage.getItem("laborerWorkType") || "N/A";
     const experience = localStorage.getItem("laborerExperience") || "0";
     const location = localStorage.getItem("laborerLocation") || "Unknown";
+    const rating = localStorage.getItem("laborerRating") || "Not Rated";
 
-    // Display laborer details
+    // Display laborer info
     if (nameEl) nameEl.textContent = name;
     if (workTypeEl) workTypeEl.textContent = workType;
     if (experienceEl) experienceEl.textContent = experience;
     if (locationEl) locationEl.textContent = location;
 
-    // Menu toggle functionality
+    // Menu toggle
     const menuToggle = document.getElementById("menu-toggle");
     const navLinks = document.querySelector(".nav-links");
-    menuToggle.addEventListener("click", function () {
-        navLinks.classList.toggle("active");
-    });
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+    }
 
-    // Function to fetch job listings from the backend
+    // Fetch jobs
     async function fetchJobs() {
         try {
-            const response = await fetch("http://localhost:8000/jobs/all"); 
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
+            const response = await fetch("http://localhost:8000/jobs/all");
+            if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
             const jobs = await response.json();
             displayJobs(jobs);
-        } catch (error) {
-            console.error("Error fetching jobs:", error);
-            jobListingsContainer.innerHTML = "<p>Failed to load job listings. Please try again later.</p>";
+        } catch (err) {
+            console.error("Error fetching jobs:", err);
+            jobListingsContainer.innerHTML = "<p>Unable to load jobs. Try again later.</p>";
         }
     }
 
-    // Function to display jobs dynamically
+    // Display jobs with Apply button
     function displayJobs(jobs) {
-        jobListingsContainer.innerHTML = "<h2>Available Jobs</h2>"; // Clear existing job listings
-        if (jobs.length === 0) {
-            jobListingsContainer.innerHTML += "<p>No jobs available at the moment.</p>";
+        jobListingsContainer.innerHTML = "<h2>Available Jobs</h2>";
+
+        if (!jobs || jobs.length === 0) {
+            jobListingsContainer.innerHTML += "<p>No jobs available right now.</p>";
             return;
         }
 
         jobs.forEach((job) => {
             const jobCard = document.createElement("div");
             jobCard.classList.add("job-card");
-            jobCard.setAttribute("data-job-id", job.id);
 
             jobCard.innerHTML = `
                 <h3>${job.title}</h3>
-                <p><strong>Location:</strong> <span class="job-location">${job.location}</span></p>
+                <p><strong>Location:</strong> ${job.location}</p>
                 <p><strong>Date:</strong> ${new Date(job.date).toLocaleDateString()}</p>
                 <p><strong>Timings:</strong> ${job.timings}</p>
                 <p><strong>Wages:</strong> ₹${job.wages}/day</p>
@@ -62,42 +63,57 @@ document.addEventListener("DOMContentLoaded", function () {
                 <button class="apply-btn"><i class="fas fa-paper-plane"></i> Apply</button>
             `;
 
-            // Attach event listener for the apply button
-            
+            const applyBtn = jobCard.querySelector(".apply-btn");
+
+            // Attach apply event with job._id and job.farmerId
+            applyBtn.addEventListener("click", () => {
+                applyForJob(job._id, job.farmerId, applyBtn);
+            });
 
             jobListingsContainer.appendChild(jobCard);
         });
     }
 
-    // Function to handle job application
-    async function applyForJob(jobId) {
-        const laborerId = localStorage.getItem("laborerId"); // Assuming laborerId is stored in localStorage
-        if (!laborerId) {
-            alert("Please log in to apply for jobs.");
+    // Apply logic
+    async function applyForJob(jobId, farmerId, buttonElement) {
+        if (!name || !experience || !location) {
+            alert("Laborer details missing. Please log in again.");
             return;
         }
 
+        const applicationData = {
+            fullName: name,
+            experience: experience,
+            location: location,
+            rating: rating,
+            jobId: jobId,
+            farmerId: farmerId,
+            status: "Pending"
+        };
+
         try {
-            const response = await fetch(`http://localhost:8000/api/jobs/${jobId}/apply`, {
+            const response = await fetch("http://localhost:8000/api/applicants", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ laborerId }),
+                body: JSON.stringify(applicationData)
             });
 
             if (response.ok) {
                 alert("Successfully applied for the job!");
+                buttonElement.textContent = "Applied";
+                buttonElement.disabled = true;
             } else {
-                const errorData = await response.json();
-                alert(`Failed to apply: ${errorData.message}`);
+                const error = await response.json();
+                alert(`Failed to apply: ${error.message}`);
             }
-        } catch (error) {
-            console.error("Error applying for job:", error);
-            alert("An error occurred while applying. Please try again later.");
+        } catch (err) {
+            console.error("Error applying:", err);
+            alert("Error applying. Try again later.");
         }
     }
 
-    // Fetch and display jobs on page load
+    // Start
     fetchJobs();
 });
