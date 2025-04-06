@@ -120,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     localStorage.setItem("laborerWorkType", data.skills);
                     localStorage.setItem("laborerExperience", data.experience);
                     localStorage.setItem("laborerLocation", data.location);
+                    localStorage.setItem("laborerId", data._id); 
                     showSuccess("Login successful! Redirecting...");
                     setTimeout(() => {
                         window.location.href = "./labordashboard.html";

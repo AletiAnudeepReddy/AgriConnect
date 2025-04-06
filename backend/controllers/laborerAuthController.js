@@ -40,6 +40,7 @@ exports.loginLaborer = async (req, res) => {
 
         res.status(200).json({ message: 'Login successful',
             fullname: laborer.fullname,
+            _id: laborer._id,
             skills: laborer.skills,
             experience: laborer.experience,
             location: laborer.location });

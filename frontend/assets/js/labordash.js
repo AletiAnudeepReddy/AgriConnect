@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const workType = localStorage.getItem("laborerWorkType") || "N/A";
     const experience = localStorage.getItem("laborerExperience") || "0";
     const location = localStorage.getItem("laborerLocation") || "Unknown";
-    const rating = localStorage.getItem("laborerRating") || "Not Rated";
+    const rating = localStorage.getItem("laborerRating") || "0";
+    
 
     // Display laborer info
     if (nameEl) nameEl.textContent = name;
@@ -67,7 +68,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Attach apply event with job._id and job.farmerId
             applyBtn.addEventListener("click", () => {
-                applyForJob(job._id, job.farmerId, applyBtn);
+                const farmerId = job.farmer_id?._id;
+                if (!farmerId) {
+                    alert("Farmer information not available for this job.");
+                    return;
+                }
+                applyForJob(job._id, farmerId, applyBtn);
             });
 
             jobListingsContainer.appendChild(jobCard);
@@ -75,6 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Apply logic
+    
     async function applyForJob(jobId, farmerId, buttonElement) {
         if (!name || !experience || !location) {
             alert("Laborer details missing. Please log in again.");
@@ -92,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         try {
-            const response = await fetch("http://localhost:8000/api/applicants", {
+            const response = await fetch("http://localhost:8000/api/applicants/apply", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
