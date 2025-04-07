@@ -4,7 +4,10 @@ const Applicant = require("../models/Applicants");
 const applyForJob = async (req, res) => {
     try {
         const { fullName, experience, location, rating, jobId, farmerId, laborerId } = req.body;
-
+        const existing = await Applicant.findOne({ laborerId, jobId });
+        if (existing) {
+            return res.status(400).json({ message: "Already applied for this job." });
+        }
         const newApplicant = new Applicant({
             fullName,
             experience,

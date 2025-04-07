@@ -32,6 +32,11 @@ const applicantSchema = new mongoose.Schema({
         ref: "Laborer",
         required: true,
     },
+    status: {
+        type: String,
+        enum: ["Pending", "Accepted", "Rejected"],
+        default: "Pending"
+    },
     appliedAt: {
         type: Date,
         default: Date.now,

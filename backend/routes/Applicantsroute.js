@@ -13,4 +13,15 @@ router.post("/apply", applyForJob);
 router.get("/job/:jobId", getApplicantsByJob);
 router.delete("/:applicantId", deleteApplicant);
 
+const Applicant = require("../models/Applicants");
+router.get("/by-laborer/:laborerId", async (req, res) => {
+    try {
+        const laborerId = req.params.laborerId;
+        const applications = await Applicant.find({ laborerId: laborerId });
+        res.status(200).json(applications);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching applications" });
+    }
+});
+
 module.exports = router;
