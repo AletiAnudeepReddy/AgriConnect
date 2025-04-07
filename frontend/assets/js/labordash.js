@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const experience = localStorage.getItem("laborerExperience") || "0";
     const location = localStorage.getItem("laborerLocation") || "Unknown";
     const rating = localStorage.getItem("laborerRating") || "0";
+    const laborerId = localStorage.getItem("laborerId");
     
 
     // Display laborer info
@@ -92,9 +93,10 @@ document.addEventListener("DOMContentLoaded", function () {
             fullName: name,
             experience: experience,
             location: location,
-            rating: rating,
+            rating: isNaN(parseFloat(rating)) ? 0 : parseFloat(rating),
             jobId: jobId,
             farmerId: farmerId,
+            laborerId: laborerId,
             status: "Pending"
         };
 
