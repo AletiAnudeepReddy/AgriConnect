@@ -33,10 +33,10 @@ const applicantSchema = new mongoose.Schema({
         required: true,
     },
     status: {
-        type: String,
-        enum: ["Pending", "Accepted", "Rejected"],
-        default: "Apply"
-    },
+  type: String,
+  enum: ["Pending", "Accepted", "Rejected"], // 👈 These are the only allowed values
+  default: "Pending"
+},
     appliedAt: {
         type: Date,
         default: Date.now,
