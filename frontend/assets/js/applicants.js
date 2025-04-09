@@ -1,5 +1,5 @@
 const container = document.getElementById("applicants-list");
-const farmerId = localStorage.getItem("farmerId"); // Ensure this is set after login
+const farmerId = localStorage.getItem("farmerId"); // Set during login
 
 // Fetch and display applicants
 async function fetchApplicants() {
@@ -24,8 +24,12 @@ async function fetchApplicants() {
                     <p><i class="fas fa-star"></i> Rating: ${applicant.rating} / 5</p>
                     <p><strong>Status:</strong> <span class="status">${applicant.status || "Pending"}</span></p>
                     <div class="action-buttons">
-                        <button class="accept-btn" data-id="${applicant._id}"><i class="fas fa-check-circle"></i> Accept</button>
-                        <button class="reject-btn" data-id="${applicant._id}"><i class="fas fa-times-circle"></i> Reject</button>
+                        <button class="accept-btn" data-id="${applicant._id}" data-laborerid="${applicant.laborerId}" data-jobid="${applicant.jobId}" data-name="${applicant.fullName}">
+                            <i class="fas fa-check-circle"></i> Accept
+                        </button>
+                        <button class="reject-btn" data-id="${applicant._id}">
+                            <i class="fas fa-times-circle"></i> Reject
+                        </button>
                     </div>
                 </div>
                 <div class="sentiment-block">
@@ -43,9 +47,9 @@ async function fetchApplicants() {
     }
 }
 
-// Handle Accept, Reject, and Sentiment Analyze buttons
+// Handle Accept, Reject, and Sentiment buttons
 document.addEventListener("click", async function (e) {
-    // Accept / Reject logic
+    // Accept or Reject logic
     if (e.target.closest(".accept-btn") || e.target.closest(".reject-btn")) {
         const isAccept = e.target.closest(".accept-btn");
         const button = e.target.closest("button");
@@ -63,6 +67,35 @@ document.addEventListener("click", async function (e) {
                 const statusElem = button.closest(".details").querySelector(".status");
                 statusElem.textContent = newStatus;
                 alert(`Applicant ${newStatus}`);
+
+                // If accepted, also store in AcceptedLaborer table
+                if (isAccept) {
+                    const laborerId = button.dataset.laborerid;
+                    const jobId = button.dataset.jobid;
+                    const laborerName = button.dataset.name;
+
+                    const addRes = await fetch("http://localhost:8000/api/accepted/add", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            farmerId,
+                            jobId,
+                            laborerId,
+                            laborerName
+                        })
+                    });
+
+                    const addResult = await addRes.json();
+
+                    if (addRes.status === 201) {
+                        console.log("Accepted laborer added.");
+                    } else if (addRes.status === 409) {
+                        console.warn("Duplicate entry: " + addResult.message);
+                    } else {
+                        console.error("Error adding accepted laborer:", addResult.message);
+                    }
+                }
+
             } else {
                 const err = await res.json();
                 alert("Error updating status: " + err.message);
@@ -72,7 +105,7 @@ document.addEventListener("click", async function (e) {
         }
     }
 
-    // Sentiment Analysis logic
+    // Sentiment Analysis Simulation
     if (e.target.closest(".analyze-btn")) {
         const btn = e.target.closest(".analyze-btn");
         const resultBox = btn.nextElementSibling;
@@ -89,4 +122,4 @@ document.addEventListener("click", async function (e) {
     }
 });
 
-fetchApplicants(); // Initial call
+fetchApplicants(); // Initial load
