@@ -3,10 +3,11 @@ const Rating = require("../models/Ratings");
 // POST: Submit rating and comment
 exports.addRating = async (req, res) => {
     try {
-        const { farmerId, laborerId, jobId, rating, comment } = req.body;
+        const { farmerId, farmerName, laborerId, jobId, rating, comment } = req.body;
 
         const newRating = new Rating({
             farmerId,
+            farmerName,
             laborerId,
             jobId,
             rating,
@@ -20,11 +21,11 @@ exports.addRating = async (req, res) => {
     }
 };
 
-// GET: All ratings for a laborer
+// GET: All ratings for a laborer (now includes farmerName directly)
 exports.getRatingsByLaborer = async (req, res) => {
     try {
         const { laborerId } = req.params;
-        const ratings = await Rating.find({ laborerId }).populate("farmerId", "fullName");
+        const ratings = await Rating.find({ laborerId });
         res.status(200).json(ratings);
     } catch (error) {
         res.status(500).json({ message: "Failed to fetch ratings.", error });

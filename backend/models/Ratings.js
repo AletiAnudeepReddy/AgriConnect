@@ -6,6 +6,10 @@ const ratingSchema = new mongoose.Schema({
         ref: "Farmer",
         required: true
     },
+    farmerName: {
+        type: String,
+        required: true
+    },
     laborerId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Laborer",
