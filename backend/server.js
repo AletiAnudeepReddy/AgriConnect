@@ -11,6 +11,7 @@ const jobRoutes = require('./routes/jobroutes');
 const applicantRoutes = require("./routes/Applicantsroute");
 const acceptedLaborerRoutes = require("./routes/acceptedLaborers");
 const ratingRoutes = require("./routes/ratingroutes");
+const farmerRatingRoutes = require("./routes/farmerRatingRoutes");
 
 
 
@@ -38,6 +39,7 @@ app.use('/jobs', jobRoutes);
 app.use("/api/applicants", applicantRoutes);
 app.use("/api/accepted", acceptedLaborerRoutes);
 app.use("/api/ratings", ratingRoutes);
+app.use("/api/farmer-ratings", farmerRatingRoutes);
 
 // Default Route
 app.get('/', (req, res) => {
