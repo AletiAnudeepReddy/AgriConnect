@@ -61,20 +61,59 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 🌟 Dynamically Load Reviews
-    function loadReviews() {
+    const laborerId = localStorage.getItem("laborerId"); // 👈 Make sure this is stored at login
+
+async function loadReviewsFromBackend() {
+    try {
+        const res = await fetch(`http://localhost:8000/api/ratings/by-laborer/${laborerId}`);
+        const data = await res.json();
+        
         const container = document.getElementById("userReviews");
-        reviews.forEach(review => {
-            const stars = "★".repeat(review.rating) + "☆".repeat(5 - review.rating);
+        container.innerHTML = '<h3><i class="fas fa-comment-dots"></i> Reviews from Farmers</h3>';
+
+        if (!data || data.length === 0) {
+            container.innerHTML += "<p>No reviews available yet.</p>";
+            return;
+        }
+
+        const ratingStats = [0, 0, 0, 0, 0]; // Index 0 = 1 star, index 4 = 5 star
+        let total = 0;
+
+        data.forEach(review => {
+            const { rating, comment, farmerName } = review;
+            ratingStats[rating - 1]++;
+            total += rating;
+
+            const stars = "★".repeat(rating) + "☆".repeat(5 - rating);
             container.innerHTML += `
                 <div class="review">
-                    <h4><i class="fas fa-user"></i> ${review.farmer} <span class="stars">${stars}</span></h4>
-                    <p><i class="fas fa-comment-alt"></i> ${review.comment}</p>
+                    <h4><i class="fas fa-user"></i> ${farmerName} <span class="stars">${stars}</span></h4>
+                    <p><i class="fas fa-comment-alt"></i> ${comment}</p>
                 </div>
             `;
         });
+
+        const count = data.length;
+        const overallRating = (total / count).toFixed(1);
+        document.querySelector(".rating-score").innerText = overallRating;
+
+        const bars = document.querySelectorAll(".rating-bar");
+        ratingStats.reverse().forEach((countPerStar, index) => {
+            const percentage = Math.round((countPerStar / count) * 100);
+            const barFill = bars[index].querySelector(".fill");
+            const percentText = bars[index].lastElementChild;
+
+            barFill.style.width = `${percentage}%`;
+            percentText.innerText = `${percentage}%`;
+        });
+
+    } catch (err) {
+        console.error("Error fetching reviews:", err);
     }
+}
+
 
     // 🌟 Run the functions to load data
     loadFarmers();
-    loadReviews();
+    loadReviewsFromBackend();
 });
