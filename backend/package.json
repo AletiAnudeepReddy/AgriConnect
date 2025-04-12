@@ -17,6 +17,7 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.13.1",
+    "nodemailer": "^6.10.0",
     "router": "^2.2.0",
     "vader-sentiment": "^1.1.3"
   }

@@ -6,7 +6,7 @@ const farmerSchema = new mongoose.Schema({
   phone: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   farm_location: { type: String, required: true },
-  farm_size: { type: String, required: true, min: 1 },
+  farm_size: { type: Number, required: true, min: 1 },
   createdAt: { type: Date, default: Date.now }
 });
 
