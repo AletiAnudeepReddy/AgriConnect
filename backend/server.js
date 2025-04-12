@@ -12,6 +12,7 @@ const applicantRoutes = require("./routes/Applicantsroute");
 const acceptedLaborerRoutes = require("./routes/acceptedLaborers");
 const ratingRoutes = require("./routes/ratingroutes");
 const farmerRatingRoutes = require("./routes/farmerRatingRoutes");
+const sentimentRoutes = require('./routes/SentimentRoutes');
 
 
 
@@ -40,6 +41,8 @@ app.use("/api/applicants", applicantRoutes);
 app.use("/api/accepted", acceptedLaborerRoutes);
 app.use("/api/ratings", ratingRoutes);
 app.use("/api/farmer-ratings", farmerRatingRoutes);
+app.use('/api/sentiment', sentimentRoutes);
+
 
 // Default Route
 app.get('/', (req, res) => {

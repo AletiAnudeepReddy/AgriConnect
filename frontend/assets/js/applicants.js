@@ -112,13 +112,24 @@ document.addEventListener("click", async function (e) {
         resultBox.textContent = "Analyzing...";
         resultBox.style.color = "#999";
 
-        setTimeout(() => {
-            const sentiments = ["Good 😊", "Average 😐", "Bad 😞"];
-            const colors = ["green", "#e67e22", "red"];
-            const random = Math.floor(Math.random() * sentiments.length);
-            resultBox.textContent = `Sentiment: ${sentiments[random]}`;
-            resultBox.style.color = colors[random];
-        }, 2000);
+        const card = btn.closest(".applicant-card");
+const laborerId = card.querySelector(".accept-btn")?.dataset.laborerid;
+
+try {
+    const res = await fetch(`http://localhost:8000/api/sentiment/laborer/${laborerId}`);
+    const data = await res.json();
+
+    resultBox.textContent = `Sentiment: ${data.sentiment}`;
+    resultBox.style.color =
+        data.sentiment.includes("Good") ? "green" :
+        data.sentiment.includes("Bad") ? "red" :
+        "#e67e22";
+} catch (err) {
+    console.error("Sentiment fetch error:", err);
+    resultBox.textContent = "Error analyzing sentiment.";
+    resultBox.style.color = "gray";
+}
+
     }
 });
 
