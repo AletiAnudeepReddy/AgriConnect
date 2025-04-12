@@ -1,5 +1,6 @@
 const Job = require('../models/jobs');
-
+const Applicant = require("../models/Applicants");
+const AcceptedLaborer = require("../models/AcceptedLaborer");
 // @desc   Create a new job
 // @route  POST /jobs/create
 exports.createJob = async (req, res) => {
@@ -81,5 +82,28 @@ exports.deleteJob = async (req, res) => {
   } catch (err) {
     console.error("Error in deleteJob:", err);
     res.status(500).json({ error: "Server error while deleting job" });
+  }
+};
+exports.completeJobAndCleanup = async (req, res) => {
+  const { jobId } = req.params;
+
+  try {
+      // Delete Job
+      const deletedJob = await Job.findByIdAndDelete(jobId);
+
+      // Delete Applicants related to the job
+      await Applicant.deleteMany({ jobId });
+
+      // Delete Accepted Laborers related to the job
+      await AcceptedLaborer.deleteMany({ jobId });
+
+      if (!deletedJob) {
+          return res.status(404).json({ message: "Job not found" });
+      }
+
+      res.status(200).json({ message: "Job and related data deleted successfully" });
+  } catch (err) {
+      console.error("Error during job completion cleanup:", err);
+      res.status(500).json({ message: "Server error during job completion" });
   }
 };

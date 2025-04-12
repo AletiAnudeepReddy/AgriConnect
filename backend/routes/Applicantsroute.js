@@ -44,6 +44,14 @@ router.put('/update-status/:id', async (req, res) => {
         res.status(500).json({ message: "Failed to update status", error: err });
     }
 });
-
+router.delete("/job/:jobId", async (req, res) => {
+    const { jobId } = req.params;
+    try {
+        const result = await Applicant.deleteMany({ jobId });
+        res.status(200).json({ message: "Applicants deleted successfully", deletedCount: result.deletedCount });
+    } catch (error) {
+        res.status(500).json({ message: "Failed to delete applicants", error });
+    }
+});
 
 module.exports = router;

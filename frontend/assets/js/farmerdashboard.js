@@ -63,6 +63,25 @@ document.addEventListener("DOMContentLoaded", function () {
         <button class="complete-btn"><i class="fas fa-check-circle"></i> Completed</button>
     </div>
 `;
+jobCard.querySelector(".complete-btn").addEventListener("click", async () => {
+    if (!confirm("Mark this job as completed? This will delete all related data.")) return;
+
+    try {
+        const response = await fetch(`http://localhost:8000/jobs/complete/${job._id}`, {
+            method: "DELETE"
+        });
+
+        if (response.ok) {
+            jobCard.remove();
+            alert("Job and associated data successfully removed.");
+        } else {
+            alert("Failed to mark job as completed.");
+        }
+    } catch (err) {
+        console.error("Complete error:", err);
+        alert("An error occurred while completing the job.");
+    }
+});
 
         // Delete functionality
         jobCard.querySelector(".delete-btn").addEventListener("click", async () => {
