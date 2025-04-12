@@ -7,7 +7,7 @@ const {
 } = require("../controllers/acceptedLaborerController");
 
 // POST: Accept laborer
-router.post("/api/accepted-laborers/add", addAcceptedLaborer);
+router.post("/add", addAcceptedLaborer);
 
 // ✅ GET: Get accepted laborers by farmer ID
 router.get("/accepted-laborers/by-farmer/:farmerId", getAcceptedLaborersByFarmer);
