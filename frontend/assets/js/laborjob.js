@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const appliedMap = {};
             applications.forEach(app => {
-                appliedMap[app.jobId] = true;
+                appliedMap[app.jobId] = app.status;
             });
 
             loadingText.remove(); // Remove loading
@@ -38,7 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 const jobCard = document.createElement("div");
                 jobCard.className = "job-card";
 
-                const isApplied = appliedMap[job._id];
+                const status = appliedMap[job._id]; // "Pending" or undefined
+                const isApplied = !!status;
 
                 jobCard.innerHTML = `
                     <h3>${job.title}</h3>
@@ -48,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p><strong>Wages:</strong> ₹${job.wages}</p>
                     <p><strong>Workers Required:</strong> ${job.workers_required}</p>
                     <button class="apply-btn" ${isApplied ? "disabled" : ""}>
-                        <i class="fas fa-paper-plane"></i> ${isApplied ? "Pending" : "Apply"}
+                        <i class="fas fa-paper-plane"></i> ${isApplied ? status : "Apply"}
                     </button>
                 `;
 
