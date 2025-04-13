@@ -1,9 +1,15 @@
-const axios = require("axios");
 const AcceptedLaborer = require("../models/AcceptedLaborer");
 const Laborer = require("../models/Labor");
+const twilio = require("twilio");
 require("dotenv").config();
 
-// POST - Add Accepted Laborer (with duplicate check)
+// Twilio config
+const twilioClient = twilio(
+    process.env.TWILIO_ACCOUNT_SID,
+    process.env.TWILIO_AUTH_TOKEN
+);
+
+// POST - Add Accepted Laborer (with Twilio SMS)
 exports.addAcceptedLaborer = async (req, res) => {
     try {
         const { farmerId, jobId, laborerId, laborerName } = req.body;
@@ -18,39 +24,36 @@ exports.addAcceptedLaborer = async (req, res) => {
         const newEntry = new AcceptedLaborer({ farmerId, jobId, laborerId, laborerName });
         await newEntry.save();
 
-        // Get laborer mobile number
+        // Get laborer's mobile number
         const laborer = await Laborer.findById(laborerId);
         if (!laborer || !laborer.phone) {
             return res.status(201).json({ message: "Accepted, but laborer's mobile number not found." });
         }
 
-        // Send SMS via Fast2SMS
+        // Format and send SMS
         const message = `Hello ${laborerName}, your job application has been accepted! Please be ready to work.`;
 
-        const smsPayload = {
-            route: "p",
-            message: message,
-            language: "english",
-            flash: 0,
-            numbers: laborer.phone // Ex: "9876543210"
-        };
-        console.log("Sending SMS to:", laborer.phone);
+        try {
+            const sms = await twilioClient.messages.create({
+                body: message,
+                from: process.env.TWILIO_PHONE_NUMBER,
+                to: "+91" + laborer.phone // Assuming Indian numbers
+            });
 
-        const config = {
-            headers: {
-                authorization: process.env.FAST2SMS_API_KEY, // Lowercase key
-                "Content-Type": "application/json"
-            }
-        };
+            res.status(201).json({
+                message: "Accepted laborer stored and SMS sent via Twilio.",
+                smsSid: sms.sid
+            });
+        } catch (smsError) {
+            console.error("❌ SMS sending failed:", smsError.message);
+            res.status(201).json({
+                message: "Laborer accepted, but SMS failed to send.",
+                error: smsError.message
+            });
+        }
 
-        const smsRes = await axios.post("https://www.fast2sms.com/dev/bulkV2", smsPayload, config);
-
-        res.status(201).json({
-            message: "Accepted laborer stored and SMS sent successfully.",
-            smsResponse: smsRes.data
-        });
     } catch (err) {
-        console.error("Error:", err);
+        console.error("❌ Error in addAcceptedLaborer:", err.message);
         res.status(500).json({
             message: "Error saving accepted laborer or sending SMS",
             error: err.message
