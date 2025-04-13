@@ -1,5 +1,6 @@
 const Applicant = require("../models/Applicants");
 const Farmer = require("../models/Farmer"); 
+const Rating = require("../models/Ratings");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
@@ -21,12 +22,19 @@ const applyForJob = async (req, res) => {
         if (existing) {
             return res.status(400).json({ message: "Already applied for this job." });
         }
+        const ratings = await Rating.find({ laborerId });
+        let averageRating = 0;
+
+        if (ratings.length > 0) {
+            const total = ratings.reduce((sum, r) => sum + r.rating, 0);
+            averageRating = (total / ratings.length).toFixed(1); // rounded to 1 decimal
+        }
 
         const newApplicant = new Applicant({
             fullName,
             experience,
             location,
-            rating,
+            rating: averageRating,
             jobId,
             farmerId,
             laborerId
