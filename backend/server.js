@@ -13,7 +13,7 @@ const acceptedLaborerRoutes = require("./routes/acceptedLaborers");
 const ratingRoutes = require("./routes/ratingroutes");
 const farmerRatingRoutes = require("./routes/farmerRatingRoutes");
 const sentimentRoutes = require('./routes/SentimentRoutes');
-
+const acceptedFarmerRoutes = require('./routes/acceptedFarmerRoutes');
 
 
 // Initialize Express App
@@ -42,6 +42,7 @@ app.use("/api/accepted", acceptedLaborerRoutes);
 app.use("/api/ratings", ratingRoutes);
 app.use("/api/farmer-ratings", farmerRatingRoutes);
 app.use('/api/sentiment', sentimentRoutes);
+app.use('/api', acceptedFarmerRoutes);
 
 
 // Default Route
