@@ -68,13 +68,13 @@ document.addEventListener("click", async function (e) {
                 statusElem.textContent = newStatus;
                 alert(`Applicant ${newStatus}`);
 
-                // If accepted, also store in AcceptedLaborer table
+                // If accepted, also store in AcceptedLaborer and AcceptedFarmer tables
                 if (isAccept) {
                     const laborerId = button.dataset.laborerid;
                     const jobId = button.dataset.jobid;
                     const laborerName = button.dataset.name;
 
-                    const addRes = await fetch("http://localhost:8000/api/accepted/add", {
+                    const addLaborerRes = await fetch("http://localhost:8000/api/accepted/add", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
@@ -85,14 +85,34 @@ document.addEventListener("click", async function (e) {
                         })
                     });
 
-                    const addResult = await addRes.json();
+                    const addFarmerRes = await fetch("http://localhost:8000/api/accepted-farmer", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            farmerId,
+                            farmerFullName: localStorage.getItem("farmerName"),
+                            jobId,
+                            laborerId
+                        })
+                    });
 
-                    if (addRes.status === 201) {
+                    const laborerResult = await addLaborerRes.json();
+                    const farmerResult = await addFarmerRes.json();
+
+                    if (addLaborerRes.status === 201) {
                         console.log("Accepted laborer added.");
-                    } else if (addRes.status === 409) {
-                        console.warn("Duplicate entry: " + addResult.message);
+                    } else if (addLaborerRes.status === 409) {
+                        console.warn("Duplicate entry: " + laborerResult.message);
                     } else {
-                        console.error("Error adding accepted laborer:", addResult.message);
+                        console.error("Error adding accepted laborer:", laborerResult.message);
+                    }
+
+                    if (addFarmerRes.status === 201) {
+                        console.log("Accepted farmer added.");
+                    } else if (addFarmerRes.status === 409) {
+                        console.warn("Duplicate entry: " + farmerResult.message);
+                    } else {
+                        console.error("Error adding accepted farmer:", farmerResult.message);
                     }
                 }
 
@@ -113,23 +133,22 @@ document.addEventListener("click", async function (e) {
         resultBox.style.color = "#999";
 
         const card = btn.closest(".applicant-card");
-const laborerId = card.querySelector(".accept-btn")?.dataset.laborerid;
+        const laborerId = card.querySelector(".accept-btn")?.dataset.laborerid;
 
-try {
-    const res = await fetch(`http://localhost:8000/api/sentiment/laborer/${laborerId}`);
-    const data = await res.json();
+        try {
+            const res = await fetch(`http://localhost:8000/api/sentiment/laborer/${laborerId}`);
+            const data = await res.json();
 
-    resultBox.textContent = `Sentiment: ${data.sentiment}`;
-    resultBox.style.color =
-        data.sentiment.includes("Good") ? "green" :
-        data.sentiment.includes("Bad") ? "red" :
-        "#e67e22";
-} catch (err) {
-    console.error("Sentiment fetch error:", err);
-    resultBox.textContent = "Error analyzing sentiment.";
-    resultBox.style.color = "gray";
-}
-
+            resultBox.textContent = `Sentiment: ${data.sentiment}`;
+            resultBox.style.color =
+                data.sentiment.includes("Good") ? "green" :
+                data.sentiment.includes("Bad") ? "red" :
+                "#e67e22";
+        } catch (err) {
+            console.error("Sentiment fetch error:", err);
+            resultBox.textContent = "Error analyzing sentiment.";
+            resultBox.style.color = "gray";
+        }
     }
 });
 
