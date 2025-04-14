@@ -11,5 +11,16 @@ router.get('/accepted-farmers/:laborerId', controller.getAcceptedFarmersByLabore
 
 // DELETE
 router.delete('/accepted-farmer/job/:jobId', controller.deleteAcceptedFarmerByJobId);
+// Express route example
+router.get("/api/accepted-farmer/check", async (req, res) => {
+    const { farmerId, jobId, laborerId } = req.query;
+    const existing = await AcceptedFarmer.findOne({ farmerId, jobId, laborerId });
+
+    if (existing) {
+        return res.json({ found: true });
+    } else {
+        return res.json({ found: false });
+    }
+});
 
 module.exports = router;
