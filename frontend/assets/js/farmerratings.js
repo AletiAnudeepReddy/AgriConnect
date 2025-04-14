@@ -7,6 +7,29 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
 
+    // Tab switching logic
+    const tabs = document.querySelectorAll("nav ul li");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", function () {
+            const targetTab = this.dataset.tab;
+
+            // Remove active class from all tabs and content sections
+            tabs.forEach(t => t.classList.remove("active"));
+            tabContents.forEach(content => content.classList.remove("active"));
+
+            // Add active class to the clicked tab and corresponding content section
+            this.classList.add("active");
+            document.getElementById(targetTab).classList.add("active");
+
+            // Scroll to "My Reviews" when clicked
+            if (targetTab === "reviews") {
+                document.getElementById("reviews").scrollIntoView({ behavior: "smooth" });
+            }
+        });
+    });
+
     // Load accepted laborers
     async function loadAcceptedLaborers() {
         try {
@@ -120,5 +143,63 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
+    // Load Farmer Reviews from Backend
+    async function loadFarmerReviewsFromBackend() {
+        try {
+            const res = await fetch(`http://localhost:8000/api/farmer-ratings/by-farmer/${farmerId}`);
+            const data = await res.json();
+
+            // Select and reset containers
+            const overallRatingEl = document.querySelector(".rating-score");
+            const ratingBars = document.querySelectorAll(".rating-bar");
+            const reviewsContainer = document.getElementById("userReviews");
+
+            reviewsContainer.innerHTML = '<h3><i class="fas fa-comment-dots"></i> Reviews from Laborers</h3>';
+
+            if (!data || data.length === 0) {
+                overallRatingEl.innerText = "N/A";
+                ratingBars.forEach(bar => {
+                    bar.querySelector(".fill").style.width = "0%";
+                    bar.lastElementChild.innerText = "0%";
+                });
+                reviewsContainer.innerHTML += "<p>No reviews available yet.</p>";
+                return;
+            }
+
+            const ratingStats = [0, 0, 0, 0, 0]; // Index 0 = 1 star, 4 = 5 star
+            let total = 0;
+
+            // Loop through data to accumulate stats and display reviews
+            data.forEach(({ rating, comment, laborerName }) => {
+                ratingStats[rating - 1]++;
+                total += rating;
+
+                const stars = "★".repeat(rating) + "☆".repeat(5 - rating);
+                reviewsContainer.innerHTML += `
+                    <div class="review">
+                        <h4><i class="fas fa-user"></i> ${laborerName} <span class="stars">${stars}</span></h4>
+                        <p><i class="fas fa-comment-alt"></i> ${comment}</p>
+                    </div>
+                `;
+            });
+
+            const reviewCount = data.length;
+            const overallRating = (total / reviewCount).toFixed(1);
+            overallRatingEl.innerText = overallRating;
+
+            // Update rating bars: reverse stats to match 5★ to 1★ order in HTML
+            ratingStats.slice().reverse().forEach((countPerStar, index) => {
+                const percentage = Math.round((countPerStar / reviewCount) * 100);
+                const bar = ratingBars[index];
+                bar.querySelector(".fill").style.width = `${percentage}%`;
+                bar.lastElementChild.innerText = `${percentage}%`;
+            });
+
+        } catch (err) {
+            console.error("Error fetching farmer reviews:", err);
+        }
+    }
+
     loadAcceptedLaborers();
+    loadFarmerReviewsFromBackend();
 });
