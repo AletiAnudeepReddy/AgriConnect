@@ -66,7 +66,7 @@ async function loadFarmers() {
                         <span class="star" data-value="5">★</span>
                     </div>
                     <textarea placeholder="Leave a comment on ${farmer.farmerFullName}'s behavior..."></textarea>
-                    <button class="submit-rating" data-farmer="${farmer.farmerId}">
+                    <button class="submit-rating" data-farmer="${farmer.farmerId}" data-job="${farmer.jobId}">
                         <i class="fas fa-paper-plane"></i> Submit Rating
                     </button>
                 </div>
@@ -74,6 +74,7 @@ async function loadFarmers() {
         });
 
         attachStarListeners(); // Reattach star selection events after loading
+        attachRatingSubmitListeners();
 
     } catch (error) {
         console.error("Error fetching accepted farmers:", error);
@@ -103,6 +104,69 @@ function attachStarListeners() {
         });
     });
 }
+function attachRatingSubmitListeners() {
+    document.querySelectorAll(".submit-rating").forEach(button => {
+        button.addEventListener("click", async function () {
+            const farmerId = this.getAttribute("data-farmer");
+            console.log(farmerId);
+            const jobCard = this.closest(".farmer");
+            
+            const stars = jobCard.querySelectorAll(".star.active");
+            console.log(stars);
+            const comment = jobCard.querySelector("textarea").value.trim();
+            console.log(comment);
+            const jobId = this.getAttribute("data-job") || "not-required"; // Optional if you use jobId in button dataset
+            console.log(jobId);
+            const laborerId = localStorage.getItem("laborerId");
+            console.log(laborerId);
+
+            if (stars.length === 0) {
+                alert("Please select a rating before submitting.");
+                return;
+            }
+
+            const rating = stars.length;
+
+            const payload = {
+                laborerId,
+                laborerName: localStorage.getItem("laborerName") || "Anonymous",
+                farmerId,
+                jobId,
+                rating,
+                comment
+            };
+
+            try {
+                const res = await fetch("http://localhost:8000/api/farmer-ratings/add", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok) {
+                    throw new Error("Failed to submit rating.");
+                }
+
+                // ✅ Delete the accepted farmer entry
+                await fetch(`http://localhost:8000/api/accepted-farmer/job/${jobId}`, {
+                    method: "DELETE"
+                });
+
+                // ✅ Remove the UI block after successful submission
+                jobCard.remove();
+                alert("Rating submitted and accepted farmer deleted.");
+
+            } catch (error) {
+                console.error("Error submitting rating:", error);
+                alert("Error submitting rating. Please try again.");
+            }
+        });
+    });
+}
+
+
 
     // 🌟 Dynamically Load Reviews
     const laborerId = localStorage.getItem("laborerId"); // 👈 Make sure this is stored at login
@@ -160,4 +224,5 @@ async function loadReviewsFromBackend() {
     // 🌟 Run the functions to load data
     loadFarmers();
     loadReviewsFromBackend();
+
 });
