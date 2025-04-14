@@ -36,29 +36,73 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     // 🌟 Dynamically Load Farmers for Rating
-    function loadFarmers() {
-        const container = document.getElementById("farmerRatings");
-        container.innerHTML = ""; 
+    // 🌟 Dynamically Load Farmers for Rating from AcceptedFarmers collection
+async function loadFarmers() {
+    const container = document.getElementById("farmerRatings");
+    container.innerHTML = ""; 
+
+    const laborerId = localStorage.getItem("laborerId");
+    console.log(laborerId);
+
+    try {
+        const res = await fetch(`http://localhost:8000/api/accepted-farmers/${laborerId}`);
         
-        farmers.forEach(farmer => {
+        
+        const response = await res.json();
+        const acceptedFarmers = response.data;
+        if (!acceptedFarmers || acceptedFarmers.length === 0) {
+            container.innerHTML = "<p>No farmers to rate yet.</p>";
+            return;
+        }
+        acceptedFarmers.forEach(farmer => {
             container.innerHTML += `
                 <div class="farmer">
-                    <h3><i class="fas fa-user"></i> ${farmer.name}</h3>
-                    <div class="stars" data-farmer="${farmer.id}">
+                    <h3><i class="fas fa-user"></i> ${farmer.farmerFullName}</h3>
+                    <div class="stars" data-farmer="${farmer.farmerId}">
                         <span class="star" data-value="1">★</span>
                         <span class="star" data-value="2">★</span>
                         <span class="star" data-value="3">★</span>
                         <span class="star" data-value="4">★</span>
                         <span class="star" data-value="5">★</span>
                     </div>
-                    <textarea placeholder="Leave a comment on ${farmer.name}'s behavior..."></textarea>
-                    <button class="submit-rating" data-farmer="${farmer.id}">
+                    <textarea placeholder="Leave a comment on ${farmer.farmerFullName}'s behavior..."></textarea>
+                    <button class="submit-rating" data-farmer="${farmer.farmerId}">
                         <i class="fas fa-paper-plane"></i> Submit Rating
                     </button>
                 </div>
             `;
         });
+
+        attachStarListeners(); // Reattach star selection events after loading
+
+    } catch (error) {
+        console.error("Error fetching accepted farmers:", error);
+        container.innerHTML = "<p>Failed to load farmers. Please try again later.</p>";
     }
+}
+
+function attachStarListeners() {
+    document.querySelectorAll(".stars").forEach(starContainer => {
+        const stars = starContainer.querySelectorAll(".star");
+        stars.forEach((star, index) => {
+            star.addEventListener("click", function () {
+                const selectedValue = parseInt(this.getAttribute("data-value"));
+
+                // Fill all stars up to the selected one
+                stars.forEach(s => {
+                    const starValue = parseInt(s.getAttribute("data-value"));
+                    if (starValue <= selectedValue) {
+                        s.classList.add("active");
+                    } else {
+                        s.classList.remove("active");
+                    }
+                });
+
+                console.log("Rating Given:", selectedValue);
+            });
+        });
+    });
+}
 
     // 🌟 Dynamically Load Reviews
     const laborerId = localStorage.getItem("laborerId"); // 👈 Make sure this is stored at login
